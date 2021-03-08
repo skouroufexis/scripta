@@ -996,7 +996,7 @@ http.createServer(function (req, res) {
 
     //GET REQUESTS
     else if(req.method=='GET'){
-        if(req.url==='/test'){
+        if(req.url=='/api/test'){
           console.log('test test test');
           res.end('test');
         }
