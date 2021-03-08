@@ -70,29 +70,30 @@ export default {
           
         //send GET request with session_id
           let request= new XMLHttpRequest();    
-              
-          request.open('GET','http://localhost:8080/api/navigate');        
+          request.open('GET','https://scripta-app.herokuapp.com/api/test');    
+          // request.open('GET','https://scripta-app.herokuapp.com/api/navigate');        
           //set session_id header        
-          if(session_id){
-            request.setRequestHeader('session_id', session_id);               
-          }
+          // if(session_id){
+          //   request.setRequestHeader('session_id', session_id);               
+          // }
 
         //send request
         request.send();  
         
         request.onload=function(){
-        if(this.status==200){
+          alert(this.responseText);
+        // if(this.status==200){
                       
-            self.navigate(1,'Scripta');
+        //     self.navigate(1,'Scripta');
 
-          } 
-          else{
-            console.log(this.responseText);      
-            //redirect to login page
-          if(this.responseText=='unauthorized'){
-            self.navigate(0,'','login')       
-            }
-          }  
+        //   } 
+        //   else{
+        //     console.log(this.responseText);      
+        //     //redirect to login page
+        //   if(this.responseText=='unauthorized'){
+        //     self.navigate(0,'','login')       
+        //     }
+        //   }  
         }  
 
         //set the background-colour of the home icon
