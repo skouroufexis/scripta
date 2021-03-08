@@ -14,12 +14,19 @@ const { response } = require('express');
 let connection=mysql.createConnection(
   {
     //check MAMP to see if these fields are provided for establishing connection
-    host:'localhost',
-    port:'8080',
-    user:'stavros',
-    database:'diary',
-    password:'uei',
-    socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock',
+    // host:'localhost',
+    // port:'8080',
+    // user:'stavros',
+    // database:'diary',
+    // password:'uei',
+    // socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock',
+
+    host:'eyw6324oty5fsovx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    port:'3306',
+    user:'il35nt2o2zwx9nng',
+    database:'itlw9u5bloej7hoh',
+    password:'c0anxpcjz3csgtwu',
+    
     
 
   }
