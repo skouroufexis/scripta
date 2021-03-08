@@ -61,39 +61,39 @@ export default {
         //call function to check if session_id is expired when the window closes
         this.checkExpiry();
 
-        // let self=this;
+        let self=this;
         
         //if the user is logged in go directly to home page
 
         //get the session_id
-          // let session_id=localStorage.getItem('session_id');
+          let session_id=localStorage.getItem('session_id');
           
         //send GET request with session_id
           let request= new XMLHttpRequest();    
-          request.open('GET','https://scripta-app.herokuapp.com/api/test');    
-          // request.open('GET','https://scripta-app.herokuapp.com/api/navigate');        
-          //set session_id header        
-          // if(session_id){
-          //   request.setRequestHeader('session_id', session_id);               
-          // }
+          
+          request.open('GET','https://scripta-app.herokuapp.com/api/navigate');        
+          // set session_id header        
+          if(session_id){
+            request.setRequestHeader('session_id', session_id);               
+          }
 
         //send request
         request.send();  
         
         request.onload=function(){
-          alert(this.responseText);
-        // if(this.status==200){
+          
+        if(this.responseText=='navigation successfull'){
                       
-        //     self.navigate(1,'Scripta');
+            self.navigate(1,'Scripta');
 
-        //   } 
-        //   else{
-        //     console.log(this.responseText);      
-        //     //redirect to login page
-        //   if(this.responseText=='unauthorized'){
-        //     self.navigate(0,'','login')       
-        //     }
-        //   }  
+          } 
+          else{
+            console.log(this.responseText);      
+            //redirect to login page
+          if(this.responseText=='unauthorized'){
+            self.navigate(0,'','login')       
+            }
+          }  
         }  
 
         //set the background-colour of the home icon
