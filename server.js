@@ -44,7 +44,7 @@ connection.query(queryUpload,function(error,results){
   }
   
 })
-let port=process.env.PORT||80
+let port=process.env.PORT||80;
 http.createServer(function (req, res) {
 
   //handling CORS
