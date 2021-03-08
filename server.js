@@ -14,8 +14,8 @@ const { response } = require('express');
 let connection=mysql.createConnection(
   {
     //check MAMP to see if these fields are provided for establishing connection
-    host:'localhost',
-    port:'8888',
+    host:'http://192.168.10.127',
+    port:'8080',
     user:'stavros',
     database:'diary',
     password:'uei',
