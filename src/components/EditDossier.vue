@@ -84,7 +84,7 @@ export default {
                        
             let self=this;
             let request= new XMLHttpRequest();            
-            request.open('GET','http://localhost:8080/api/get-user-dossiers'); 
+            request.open('GET','https://scripta-app.herokuapp.com/api/get-user-dossiers'); 
             
              if(input.value!=this.dossier.dossier_name && input.value.trim()    !=''){
                 input_value=input.value;
