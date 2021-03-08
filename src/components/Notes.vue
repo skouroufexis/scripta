@@ -82,7 +82,7 @@ export default {
             //retrieve notes for this dossier
             let self=this;
             let request= new XMLHttpRequest();            
-            request.open('GET','http://localhost:8080/api/user-notes');        
+            request.open('GET','https://scripta-app.herokuapp.com/api/user-notes');        
 
             let session_id=localStorage.getItem('session_id');
             let user_id=localStorage.getItem('user_id');
@@ -131,7 +131,7 @@ export default {
                 let session_id=localStorage.getItem('session_id');            
                 let request=new XMLHttpRequest();
                                 
-                request.open('DELETE','http://localhost:8080/api/note');
+                request.open('DELETE','https://scripta-app.herokuapp.com/api/note');
 
                 request.setRequestHeader('session_id', session_id);
 

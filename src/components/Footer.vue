@@ -229,7 +229,7 @@ export default {
         //send GET request with session_id
         let request= new XMLHttpRequest();    
         
-        request.open('GET','http://localhost:8080/api/navigate');        
+        request.open('GET','https://scripta-app.herokuapp.com/api/navigate');        
        
         //set session_id header        
         if(session_id){
@@ -485,7 +485,7 @@ export default {
                 // input=document.getElementById('footer_inputDossierName');    
 
                 //path for requesting user dossiers
-                path='http://localhost:8080/api/get-user-dossiers';
+                path='https://scripta-app.herokuapp.com/api/get-user-dossiers';
                 container=document.getElementById('footer_dossierResultsContainer');
                 
                 if(this.dossier==''){
@@ -499,7 +499,7 @@ export default {
                 // input=document.getElementById('footer_inputTagName');
         
                 //path for requesting user tags
-                path='http://localhost:8080/api/get-user-tags';
+                path='https://scripta-app.herokuapp.com/api/get-user-tags';
                 container=document.getElementById('footer_tagsResultsContainer');
 
                 
@@ -770,7 +770,7 @@ export default {
           input=document.getElementById('footer_inputDossierName');    
 
           //path for requesting user dossiers
-           path='http://localhost:8080/api/get-user-dossiers';
+           path='https://scripta-app.herokuapp.com/api/get-user-dossiers';
            container=document.getElementById('footer_dossierResultsContainer');                                
         }    
         else
@@ -779,7 +779,7 @@ export default {
             input=document.getElementById('footer_inputTagName');
         
             //path for requesting user tags
-            path='http://localhost:8080/api/get-user-tags';
+            path='https://scripta-app.herokuapp.com/api/get-user-tags';
             container=document.getElementById('footer_tagsResultsContainer');
             
         }     

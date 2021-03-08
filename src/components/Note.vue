@@ -222,7 +222,7 @@ export default {
             this.attachments=[];
             let self=this;         
             let request= new XMLHttpRequest();            
-            request.open('GET','http://localhost:8080/api/note-attachments'); 
+            request.open('GET','https://scripta-app.herokuapp.com/api/note-attachments'); 
     
             let session_id=localStorage.getItem('session_id');
             let note_fk=this.noteData[0].note_id;
@@ -261,7 +261,7 @@ export default {
              
             let self=this;
             let request= new XMLHttpRequest();            
-            request.open('GET','http://localhost:8080/api/note-dossier');        
+            request.open('GET','https://scripta-app.herokuapp.com/api/note-dossier');        
 
             let session_id=localStorage.getItem('session_id');
             let dossier_fk=this.noteData[0].dossier_fk;
@@ -290,7 +290,7 @@ export default {
             let self=this;
             
             let request= new XMLHttpRequest();            
-            request.open('GET','http://localhost:8080/api/note-tags');        
+            request.open('GET','https://scripta-app.herokuapp.com/api/note-tags');        
 
             let session_id=localStorage.getItem('session_id');
             let note_fk=this.noteData[0].note_id;
@@ -331,7 +331,7 @@ export default {
 
             let request=new XMLHttpRequest();
                             
-            request.open('PUT','http://localhost:8080/api/note');
+            request.open('PUT','https://scripta-app.herokuapp.com/api/note');
 
             request.setRequestHeader('session_id', session_id);
 
@@ -409,7 +409,7 @@ export default {
             //send request to modify dossier                        
             let request=new XMLHttpRequest();
                 
-            request.open('PUT','http://localhost:8080/api/assign-new-dossier');
+            request.open('PUT','https://scripta-app.herokuapp.com/api/assign-new-dossier');
 
             request.setRequestHeader('session_id', session_id);            
             let data=JSON.stringify({dossier_name:dossier_name ,note_id:note_id,user_fk:user_id});

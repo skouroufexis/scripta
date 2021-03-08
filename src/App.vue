@@ -147,7 +147,7 @@ export default {
       //send GET request 
       let request=new XMLHttpRequest();
 
-      request.open('GET','http://localhost:8080/api/expiry');        
+      request.open('GET','https://scripta-app.herokuapp.com/api/expiry');        
       
       if(session_id){
       request.setRequestHeader('session_id', session_id);  

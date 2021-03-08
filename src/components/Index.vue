@@ -91,7 +91,7 @@ export default {
              
 
             let request= new XMLHttpRequest();            
-            request.open('GET','http://localhost:8080/api/recent-notes');        
+            request.open('GET','https://scripta-app.herokuapp.com/api/recent-notes');        
 
             let session_id=localStorage.getItem('session_id');
             let user_id=localStorage.getItem('user_id');
@@ -123,7 +123,7 @@ export default {
             if(query_input!=''){
 
                 let request= new XMLHttpRequest();            
-                request.open('GET','http://localhost:8080/api/query-note');        
+                request.open('GET','https://scripta-app.herokuapp.com/api/query-note');        
 
                 let session_id=localStorage.getItem('session_id');
                 let user_id=localStorage.getItem('user_id');
@@ -164,7 +164,7 @@ export default {
             if(del==true){
                 
             let request= new XMLHttpRequest();            
-            request.open('DELETE','http://localhost:8080/api/note');        
+            request.open('DELETE','https://scripta-app.herokuapp.com/api/note');        
 
             let session_id=localStorage.getItem('session_id');            
             let data=JSON.stringify({note_id:note.note_id});            

@@ -118,7 +118,7 @@ export default {
         let session_id=localStorage.getItem('session_id');
         let user_id=localStorage.getItem('user_id');
 
-        request.open('GET','http://localhost:8080/api/account');        
+        request.open('GET','https://scripta-app.herokuapp.com/api/account');        
 
         //set session_id header        
         if(session_id){
@@ -191,7 +191,7 @@ export default {
                 let session_id=localStorage.getItem('session_id');
                 let user_id=localStorage.getItem('user_id');
                 
-                let url='http://localhost:8080/api/delete-user';
+                let url='https://scripta-app.herokuapp.com/api/delete-user';
                 let request=new XMLHttpRequest();
                 
                 request.open('DELETE',url);
@@ -275,7 +275,7 @@ export default {
                         throw 'Please enter a valid email address';
                     }
                 }
-                let url='http://localhost:8080/api/update-info';
+                let url='https://scripta-app.herokuapp.com/api/update-info';
                 let user_id=localStorage.getItem('user_id');                
                 let session_id=localStorage.getItem('session_id');
                 let userData={user_name:user_name,user_email:user_email};                
@@ -338,7 +338,7 @@ export default {
              
                  let request=new XMLHttpRequest();
                 
-                 request.open('POST','http://localhost:8080/api/validate_password');
+                 request.open('POST','https://scripta-app.herokuapp.com/api/validate_password');
                  let data=JSON.stringify({oldPassword:oldPassword,user_id:user_id});
                  request.send(data);                  
                     
@@ -352,7 +352,7 @@ export default {
                         //send put request for updating password
                         let session_id=localStorage.getItem('session_id');
                         
-                        let requestUrl='http://localhost:8080/api/update_password';
+                        let requestUrl='https://scripta-app.herokuapp.com/api/update_password';
                         self.sendUpdateRequest(requestUrl,user_id,password1,session_id,2);    
 
                     }
@@ -463,7 +463,7 @@ export default {
                 let session_id=localStorage.getItem('session_id');  
                 
                 let request=new XMLHttpRequest();            
-                request.open('GET','http://localhost:8080/api/logout');        
+                request.open('GET','https://scripta-app.herokuapp.com/api/logout');        
                 //set session_id header        
                 if(session_id){
                 request.setRequestHeader('session_id', session_id);               

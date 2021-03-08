@@ -68,7 +68,7 @@ export default {
         userInitials:function(){
             let self=this;
            let request= new XMLHttpRequest();            
-            request.open('GET','http://localhost:8080/api/initials');        
+            request.open('GET','https://scripta-app.herokuapp.com/api/initials');        
 
             let session_id=localStorage.getItem('session_id');
             let user_id=localStorage.getItem('user_id');
@@ -147,7 +147,7 @@ export default {
                 let session_id=localStorage.getItem('session_id');  
                 
                 let request=new XMLHttpRequest();            
-                request.open('GET','http://localhost:8080/api/logout');        
+                request.open('GET','https://scripta-app.herokuapp.com/api/logout');        
                 //set session_id header        
                 if(session_id){
                 request.setRequestHeader('session_id', session_id);               
@@ -185,7 +185,7 @@ export default {
             //send GET request with session_id
             let request= new XMLHttpRequest();    
             
-            request.open('GET','http://localhost:8080/api/navigate');        
+            request.open('GET','https://scripta-app.herokuapp.com/api/navigate');        
         
             //set session_id header        
             if(session_id){
