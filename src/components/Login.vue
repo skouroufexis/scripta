@@ -63,8 +63,8 @@ export default {
                 //send post request with credentials
                 let request=new XMLHttpRequest();
                 
-                request.open('POST','https://scripta-app.herokuapp.com/api/login/');
-                // request.setRequestHeader('Access-Control-Allow-Methods','POST,GET,PUT,DELETE');
+                request.open('POST','https://scripta-app.herokuapp.com/api/login');
+                request.setRequestHeader('Allow','POST');
                 let data=JSON.stringify({email:this.email,password:this.password});
                 request.send(data);                  
                 let self=this;
