@@ -78,7 +78,7 @@ http.createServer(function (req, res) {
 
         //ROUTES
 
-        if(req.url=='/api/login'){
+        if(req.url=='api/login'){
 
           data=JSON.parse(data); 
 
