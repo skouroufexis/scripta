@@ -54,7 +54,7 @@ http.createServer(function (req, res) {
   //   'Access-Control-Allow-Headers':'*'
         
   // };
-
+    res.setHeader('Access-Control-Allow-Methods', 'POST,GET,PUT,DELETE');
   //POST requests
     if(req.method=='POST'){
       
