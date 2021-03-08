@@ -48,16 +48,16 @@ let port=process.env.PORT||80;
 http.createServer(function (req, res) {
 
   //handling CORS
-  // const headers = {
-  //   'Access-Control-Allow-Origin': '*',
-  //   'Access-Control-Allow-Methods': 'POST, GET',
-  //   'Access-Control-Allow-Headers':'*'
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST, GET',
+    'Access-Control-Allow-Headers':'*'
         
-  // };
+  };
     res.setHeader('Access-Control-Allow-Origin','*');
     res.setHeader('Access-Control-Allow-Headers','*');
     res.setHeader('Access-Control-Allow-Methods','POST,GET,PUT,DELETE');
-    res.setHeader('Access-Control-Allow-Credentials, true')
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
 
     
   //POST requests
