@@ -1,0 +1,65 @@
+{
+  "name": "diary",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@dangvanthanh/vue-clock": "^0.2.1",
+    "@pencilpix/vue2-clock-picker": "^0.1.6",
+    "bcrypt": "^5.0.0",
+    "core-js": "^3.6.5",
+    "cross-blob": "^2.0.0",
+    "email-validator": "^2.0.4",
+    "express": "^4.17.1",
+    "html2pdf.js": "^0.9.2",
+    "jspdf": "^2.3.0",
+    "mysql": "^2.18.1",
+    "pdf-lib": "^1.16.0",
+    "pdfkit": "^0.11.0",
+    "pdfmake": "^0.1.70",
+    "uuid": "^8.3.2",
+    "v-calendar": "^2.1.1",
+    "vue": "^2.6.11",
+    "vue-clock-picker": "^0.4.2",
+    "vue-clock2": "^1.1.5",
+    "vue-functional-calendar": "^2.8.88",
+    "vue2-timepicker": "^1.1.5"
+  },
+  "devDependencies": {
+    "@types/js-base64": "^3.0.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "nodemon": "^2.0.6",
+    "pug": "^3.0.0",
+    "pug-plain-loader": "^1.1.0",
+    "sass-loader": "^10.1.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
