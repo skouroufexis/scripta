@@ -54,11 +54,11 @@ http.createServer(function (req, res) {
   //   'Access-Control-Allow-Headers':'*'
         
   // };
-    res.setHeader('Access-Control-Allow-Origin','*');
-    res.setHeader('Access-Control-Allow-Headers','*');
+    // res.setHeader('Access-Control-Allow-Origin','*');
+    // res.setHeader('Access-Control-Allow-Headers','*');
     // res.setHeader('Access-Control-Allow-Methods','POST,GET,PUT,DELETE');
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-    res.setHeader('Allow', 'POST,GET');
+    // res.setHeader('Access-Control-Allow-Credentials', 'true');
+    // res.setHeader('Allow', 'POST,GET');
 
     
   //POST requests
@@ -78,7 +78,7 @@ http.createServer(function (req, res) {
 
         //ROUTES
 
-        if(req.url=='api/login'){
+        if(req.url=='/api/login'){
 
           data=JSON.parse(data); 
 
