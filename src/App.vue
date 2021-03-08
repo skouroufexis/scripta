@@ -61,12 +61,12 @@ export default {
         //call function to check if session_id is expired when the window closes
         this.checkExpiry();
 
-        let self=this;
+        // let self=this;
         
         //if the user is logged in go directly to home page
 
         //get the session_id
-          let session_id=localStorage.getItem('session_id');
+          // let session_id=localStorage.getItem('session_id');
           
         //send GET request with session_id
           let request= new XMLHttpRequest();    
