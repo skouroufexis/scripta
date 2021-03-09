@@ -64,7 +64,7 @@ export default {
                 let request=new XMLHttpRequest();
                 
                 request.open('POST','https://scripta-app.herokuapp.com/api/login');
-                
+                request.setRequestHeader('Content-Type','application/json');
                 let data=JSON.stringify({email:this.email,password:this.password});
                 request.send(data);                  
                 let self=this;
