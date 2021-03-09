@@ -795,7 +795,7 @@ app.put('/api/note',function(req,res){
 app.delete(/.*/, function (req, res) {
   res.setHeader('Content-Type','application/json');
 })
-app.delete('/api/delete-user',function(req.res){
+app.delete('/api/delete-user',function(req,res){
   if(authenticate()){
     let user_id=req.body.user_id;
     let user_password=req.body.user_password;  
