@@ -67,7 +67,7 @@ export default {
                 request.setRequestHeader('Content-Type','application/json');
                 let data=JSON.stringify({email:this.email,password:this.password});
                 request.send(data);                  
-                let self=this;
+                // let self=this;
                 request.onload = function (){        
                             
                             alert(this.responseText);

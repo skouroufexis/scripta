@@ -1,11 +1,11 @@
 
-var http = require('http');
+// var http = require('http');
 
 
 var mysql=require('mysql');
 
 
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 
 const express = require('express')
 const app = express();
