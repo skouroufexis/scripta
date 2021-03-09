@@ -69,22 +69,23 @@ export default {
                 request.send(data);                  
                 let self=this;
                 request.onload = function (){        
-                                                               
-                    let response=JSON.parse(this.responseText);                    
-                        if(this.status==200){
                             
-                            //save session_id to localStorage
-                            localStorage.setItem('session_id',response.session_id);
+                            alert(this.responseText);
+                    // let response=JSON.parse(this.responseText);                    
+                    //     if(this.status==200){
+                            
+                    //         //save session_id to localStorage
+                    //         localStorage.setItem('session_id',response.session_id);
 
-                            //save user_id to localStorage
-                            localStorage.setItem('user_id',response.user_id);
+                    //         //save user_id to localStorage
+                    //         localStorage.setItem('user_id',response.user_id);
 
-                            //go to home screen
-                            self.$emit('navigation',1,'Application title','index');
-                        }
-                        else{
-                            alert(response.message);
-                        }                    
+                    //         //go to home screen
+                    //         self.$emit('navigation',1,'Application title','index');
+                    //     }
+                    //     else{
+                    //         alert(response.message);
+                    //     }                    
                 };
 
             }
