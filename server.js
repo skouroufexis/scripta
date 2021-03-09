@@ -11,22 +11,11 @@ const port = process.env.PORT || 8080;
 app.use('/', serveStatic(path.join(__dirname, '/dist')));
 app.use(express.json());
 // app.use(cors());
-app.get(/.*/,function(req,res){
-  res.sendFile(__dirname+'/dist/index.html');
-});
+// app.get(/.*/,function(req,res){
+//   res.sendFile(__dirname+'/dist/index.html');
+// });
 app.listen(port);
 console.log("SSSERRVERRRR");
-
-
-
-
-
-
-
-
-
-
-
 
 var mysql=require('mysql');
 
