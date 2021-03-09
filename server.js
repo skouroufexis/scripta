@@ -7,6 +7,49 @@ var mysql=require('mysql');
 
 const bcrypt = require('bcrypt');
 
+
+
+let connection=mysql.createConnection(
+  {
+    //check MAMP to see if these fields are provided for establishing connection
+    // host:'localhost',
+    // port:'8080',
+    // user:'stavros',
+    // database:'diary',
+    // password:'uei',
+    // socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock',
+
+    host:'eyw6324oty5fsovx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    port:'3306',
+    user:'il35nt2o2zwx9nng',
+    database:'itlw9u5bloej7hoh',
+    password:'c0anxpcjz3csgtwu',
+    
+    
+
+  }
+);
+
+connection.connect((error)=>{
+  
+  if(error){
+    
+    console.log(error);
+  }
+  else{
+    console.log('connected');
+  }
+})
+
+//setting max upload size to 30 MB
+let queryUpload='set global max_allowed_packet=30000000';
+connection.query(queryUpload,function(error,results){
+  if(error){
+    console.log(error);
+  }
+  
+})
+
 const express = require('express');
 var cors = require('cors');
 const app = express();
@@ -19,6 +62,11 @@ const path = require('path');
 
 app.use(serveStatic(path.join(__dirname, 'dist')));
 
+
+
+
+
+
 app.get(/.*/, function (req, res) {
 	res.sendFile(path.join(__dirname, '/dist/index.html'))
 })
@@ -29,7 +77,7 @@ app.listen(port);
 // app.post(/.*/, function (req, res) {
 //   res.setHeader('Content-Type','application/json');
 // })
-app.post('/api/login',function(req,res){
+app.post('api/login',function(req,res){
 
   let email=req.body.email;
   let password=req.body.password;
@@ -610,9 +658,7 @@ app.post('/api/notesTags',function(req,res){
   }
 });
 
-app.put(/.*/, function (req, res) {
-	res.setHeader('Content-Type', 'application/json');
-})
+
 
 app.put('/api/update_password',function(req,res){
   
@@ -792,9 +838,7 @@ app.put('/api/note',function(req,res){
 });
 
 
-app.delete(/.*/, function (req, res) {
-  res.setHeader('Content-Type','application/json');
-})
+
 app.delete('/api/delete-user',function(req,res){
   if(authenticate()){
     let user_id=req.body.user_id;
@@ -1459,47 +1503,7 @@ app.get('/api/query-note',function(req,res){
 
 
 
-let connection=mysql.createConnection(
-  {
-    //check MAMP to see if these fields are provided for establishing connection
-    // host:'localhost',
-    // port:'8080',
-    // user:'stavros',
-    // database:'diary',
-    // password:'uei',
-    // socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock',
 
-    host:'eyw6324oty5fsovx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-    port:'3306',
-    user:'il35nt2o2zwx9nng',
-    database:'itlw9u5bloej7hoh',
-    password:'c0anxpcjz3csgtwu',
-    
-    
-
-  }
-);
-
-connection.connect((error)=>{
-  
-  if(error){
-    
-    console.log(error);
-  }
-  else{
-    console.log('connected');
-  }
-})
-
-//setting max upload size to 30 MB
-let queryUpload='set global max_allowed_packet=30000000';
-connection.query(queryUpload,function(error,results){
-  if(error){
-    console.log(error);
-  }
-  
-})
-// let port=process.env.PORT||8000;
 // http.createServer(function (req, res) {
 
 
