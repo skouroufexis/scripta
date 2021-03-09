@@ -60,7 +60,7 @@ app.use(cors());
 const serveStatic = require("serve-static");
 const path = require('path');
 
-app.use(serveStatic(path.join(__dirname, 'dist')));
+app.use('/', serveStatic(path.join(__dirname, '/dist')));
 
 
 
@@ -1573,8 +1573,6 @@ function checkPassword(user_id,password,callback){
   })
 }
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 8080;
 
-app.listen(port, '0.0.0.0',function()  {
-  console.log('Listening on Port ' + port);
- });
+app.listen(port);
