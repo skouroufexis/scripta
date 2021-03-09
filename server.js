@@ -72,12 +72,14 @@ app.get(/.*/, function (req, res) {
 })
 
 const port = process.env.PORT || 8000;
-app.listen(port);
 
+app.listen(port, '0.0.0.0',function()  {
+  console.log('Listening on Port ' + port);
+ });
 // app.post(/.*/, function (req, res) {
 //   res.setHeader('Content-Type','application/json');
 // })
-app.post('api/login',function(req,res){
+app.post('api/login',cors(), function(req,res){
 
   let email=req.body.email;
   let password=req.body.password;
@@ -154,7 +156,7 @@ app.post('api/login',function(req,res){
 
 });
 
-app.post('/api/addNewUser',function(req,res){
+app.post('/api/addNewUser',cors(),function(req,res){
   let user_name=req.body.user_name;
   let user_email=req.body.user_email;
   let temp_password=req.body.user_password;
@@ -205,7 +207,7 @@ app.post('/api/addNewUser',function(req,res){
 
 });
 
-app.post('/api/validate_password',function(req,res){
+app.post('/api/validate_password',cors(),function(req,res){
   if(authenticate()){
     let query= 'SELECT * FROM users WHERE user_id=?';
     let oldPassword=req.body.oldPassword;
@@ -258,7 +260,7 @@ app.post('/api/validate_password',function(req,res){
   }
 })
 
-app.post('/api/addNewNote',function(req,res){
+app.post('/api/addNewNote',cors(),function(req,res){
   if(authenticate())
   {let query;  
 
@@ -546,7 +548,7 @@ app.post('/api/addNewNote',function(req,res){
 });
 
 
-app.post('/api/attachment',function(req,res){
+app.post('/api/attachment',cors(),function(req,res){
   if(authenticate()){
     let query='INSERT INTO attachments (attachment_name,note_fk) VALUES(?,?)';
     req.body.forEach(d=>{
@@ -578,7 +580,7 @@ app.post('/api/attachment',function(req,res){
   }
 })
 
-app.post('/api/notesTags',function(req,res){
+app.post('/api/notesTags',cors(),function(req,res){
   if(authenticate()){
     let user_fk=req.body.user_fk;
     let tag_name=req.body.tag_name;
@@ -660,7 +662,7 @@ app.post('/api/notesTags',function(req,res){
 
 
 
-app.put('/api/update_password',function(req,res){
+app.put('/api/update_password',cors(),function(req,res){
   
   if(authenticate()){
     
@@ -698,7 +700,7 @@ app.put('/api/update_password',function(req,res){
   
 })
 
-app.put('/api/update-info',function(req,res){
+app.put('/api/update-info',cors(),function(req,res){
   if(authenticate()){
     let user_id=req.body.user_id;
     let user_name=req.body.user_name;
@@ -726,7 +728,7 @@ app.put('/api/update-info',function(req,res){
 });
 
  //assigns a single note to a new dossier
-app.put('/api/assign-new-dossier',function(req,res){
+app.put('/api/assign-new-dossier',cors(),function(req,res){
   if(authenticate()){
     let user_fk=req.body.user_fk;
     let note_id=req.body.note_id;
@@ -769,7 +771,7 @@ app.put('/api/assign-new-dossier',function(req,res){
   }
 })
 
-app.put('/api/dossier-name',function(req,res){
+app.put('/api/dossier-name',cors(),function(req,res){
   if(authenticate()){
     let user_id=req.body.user_id;
     let dossier_fk=req.body.dossier_fk;
@@ -811,7 +813,7 @@ app.put('/api/dossier-name',function(req,res){
   }
 })
 
-app.put('/api/note',function(req,res){
+app.put('/api/note',cors(),function(req,res){
   if(authenticate()){
     let note_id=req.body.note_id;
     let title=req.body.title;
@@ -839,7 +841,7 @@ app.put('/api/note',function(req,res){
 
 
 
-app.delete('/api/delete-user',function(req,res){
+app.delete('/api/delete-user',cors(),function(req,res){
   if(authenticate()){
     let user_id=req.body.user_id;
     let user_password=req.body.user_password;  
@@ -876,7 +878,7 @@ app.delete('/api/delete-user',function(req,res){
   }
 });
 
-app.delete('/api/update-info',function(req,res){
+app.delete('/api/update-info',cors(),function(req,res){
   if(authenticate()){
     let user_id=req.body.user_id;
     let user_name=req.body.user_name;
@@ -901,7 +903,7 @@ app.delete('/api/update-info',function(req,res){
   }
 });
 
-app.delete('/api/attachment',function(req,res){
+app.delete('/api/attachment',cors(),function(req,res){
   if(authenticate()){
     let attachment_id=req.body.attachment_id;
     let query = 'DELETE FROM attachments WHERE attachment_id=?';
@@ -925,7 +927,7 @@ app.delete('/api/attachment',function(req,res){
   }
 });
 
-app.delete('/api/note-tag',function(req,res){
+app.delete('/api/note-tag',cors(),function(req,res){
   if(authenticate())
   {
     let note_fk=req.body.note_fk;
@@ -952,7 +954,7 @@ app.delete('/api/note-tag',function(req,res){
     res.end('unauthorized');
   }
 })
-app.delete('/api/dossier',function(req,res){
+app.delete('/api/dossier',cors(),function(req,res){
   if(authenticate()){
     let dossier_fk=data.dossier_fk;
             query='DELETE FROM notes WHERE dossier_fk=?';
@@ -985,7 +987,7 @@ app.delete('/api/dossier',function(req,res){
   }
 });
 
-app.get('/api/expiry',function(req,res){
+app.get('/api/expiry',cors(),function(req,res){
   if(authenticate()){
      //returns the time difference between current time and the timestamp of the stored session_id
      let query='SELECT TIMEDIFF((SELECT time FROM sessions where session_id =?),now())';
@@ -1025,7 +1027,7 @@ app.get('/api/expiry',function(req,res){
   }
 })
 
-app.get('/api/initials',function(req,res){
+app.get('/api/initials',cors(),function(req,res){
   let user_id=req.headers.user_id;
             query='SELECT user_name from users where user_id=?';
             connection.query(query,[user_id],function(error,results){
@@ -1040,7 +1042,7 @@ app.get('/api/initials',function(req,res){
   })
 })
 
-app.get('/api/logout',function(req,res){
+app.get('/api/logout',cors(),function(req,res){
   let session_id=req.headers.session_id;            
             
   let query='DELETE FROM sessions WHERE session_id=?';
@@ -1059,7 +1061,7 @@ app.get('/api/logout',function(req,res){
   })
 })
 
-app.get('/api/account',function(req,res){
+app.get('/api/account',cors(),function(req,res){
   if(authenticate()){
     let user_id=req.headers.user_id;
     let query='SELECT * FROM users WHERE user_id=?';
@@ -1091,7 +1093,7 @@ app.get('/api/account',function(req,res){
   }
 })
 
-app.get('/api/get-user-dossiers',function(req,res){
+app.get('/api/get-user-dossiers',cors(),function(req,res){
   if(authenticate()){
     let query;
     let user_id=req.headers.user_id;
@@ -1152,7 +1154,7 @@ app.get('/api/get-user-dossiers',function(req,res){
 });
 
 
-app.get('/api/get-user-tags',function(req,res){
+app.get('/api/get-user-tags',cors(),function(req,res){
   if(authenticate()){
     let query;
             let user_id=req.headers.user_id;
@@ -1218,7 +1220,7 @@ app.get('/api/get-user-tags',function(req,res){
 });
 
 
-app.get('/api/get-dossiers-info',function(req,res){
+app.get('/api/get-dossiers-info',cors(),function(req,res){
   if(authenticate()){
     let query;
     let user_id=req.headers.user_id;
@@ -1284,7 +1286,7 @@ app.get('/api/get-dossiers-info',function(req,res){
   }
 });
 
-app.get('/api/user-notes',function(req,res){
+app.get('/api/user-notes',cors(),function(req,res){
   if(authenticate())
   {
     let user_id=req.headers.user_id;
@@ -1320,7 +1322,7 @@ app.get('/api/user-notes',function(req,res){
   }
 });
 
-app.get('/api/note-dossier',function(req,res){
+app.get('/api/note-dossier',cors(),function(req,res){
   if(authenticate()){
     let dossier_fk=req.headers.dossier_fk;
     let query='SELECT * FROM userDossier WHERE userDossier_id=?';
@@ -1344,7 +1346,7 @@ app.get('/api/note-dossier',function(req,res){
   }
 });
 
-app.get('/api/note-attachments',function(req,res){
+app.get('/api/note-attachments',cors(),function(req,res){
   if(authenticate())
   {
     let note_fk=req.headers.note_fk;            
@@ -1374,7 +1376,7 @@ app.get('/api/note-attachments',function(req,res){
   }
 });
 
-app.get('/api/note-tags',function(req,res){
+app.get('/api/note-tags',cors(),function(req,res){
   if(authenticate()){
     let note_fk=req.headers.note_fk;
     let query='SELECT * FROM notesTags WHERE note_fk=?';     
@@ -1403,7 +1405,7 @@ app.get('/api/note-tags',function(req,res){
   }
 });
 
-app.get('/api/user-tags',function(req,res){
+app.get('/api/user-tags',cors(),function(req,res){
   if(authenticate()){
     let userTag_id=req.headers.usertag_id;            
     let query='SELECT * FROM userTags WHERE userTag_id=?';     
@@ -1431,7 +1433,7 @@ app.get('/api/user-tags',function(req,res){
   }
 });
 
-app.get('/api/recent-notes',function(req,res){
+app.get('/api/recent-notes',cors(),function(req,res){
   if(authenticate()){
     let user_id=req.headers.user_id;
     let query='SELECT * FROM notes WHERE user_fk=? ORDER BY note_id DESC LIMIT 3';
@@ -1465,7 +1467,7 @@ app.get('/api/recent-notes',function(req,res){
   }
 })
 
-app.get('/api/query-note',function(req,res){
+app.get('/api/query-note',cors(),function(req,res){
   if(authenticate()){
     let user_id=req.headers.user_id;
     let query_input=req.headers.query_input;
