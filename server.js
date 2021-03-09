@@ -71,14 +71,7 @@ app.get(/.*/, function (req, res) {
 	res.sendFile(path.join(__dirname, '/dist/index.html'))
 })
 
-const port = process.env.PORT || 8000;
 
-app.listen(port, '0.0.0.0',function()  {
-  console.log('Listening on Port ' + port);
- });
-// app.post(/.*/, function (req, res) {
-//   res.setHeader('Content-Type','application/json');
-// })
 app.post('api/login',cors(), function(req,res){
 
   let email=req.body.email;
@@ -1579,3 +1572,9 @@ function checkPassword(user_id,password,callback){
     }
   })
 }
+
+const port = process.env.PORT || 80;
+
+app.listen(port, '0.0.0.0',function()  {
+  console.log('Listening on Port ' + port);
+ });
