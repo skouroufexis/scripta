@@ -1,5 +1,31 @@
 
-// var http = require('http');
+const express = require('express');
+const serveStatic = require("serve-static");
+const path = require('path');
+const app=express();
+var cors = require('cors');
+
+const port = process.env.PORT || 8080;
+
+// app.use(express.static(__dirname+'/dist/'));
+app.use('/', serveStatic(path.join(__dirname, '/dist')));
+app.use(express.json());
+// app.use(cors());
+app.get(/.*/,function(req,res){
+  res.sendFile(__dirname+'/dist/index.html');
+});
+app.listen(port);
+console.log("SSSERRVERRRR");
+
+
+
+
+
+
+
+
+
+
 
 
 var mysql=require('mysql');
@@ -24,9 +50,6 @@ let connection=mysql.createConnection(
     user:'il35nt2o2zwx9nng',
     database:'itlw9u5bloej7hoh',
     password:'c0anxpcjz3csgtwu',
-    
-    
-
   }
 );
 
@@ -48,30 +71,6 @@ connection.connect((error)=>{
 //     console.log(error);
 //   }  
 // })
-
-const express = require('express');
-const port = process.env.PORT || 8080;
-const app=express();
-// app.use(express.static(__dirname+'/dist/'));
-app.use('/', serveStatic(path.join(__dirname, '/dist')));
-app.get(/.*/,function(req,res){
-  res.sendFile(__dirname+'/dist/index.html');
-});
-app.listen(port);
-console.log("SSSERRVERRRR");
-
-var cors = require('cors');
-const app = express();
-app.use(express.json());
-app.use(cors());
-
-
-const serveStatic = require("serve-static");
-const path = require('path');
-
-
-
-
 
 
 app.post('/api/login', function(req,res){
