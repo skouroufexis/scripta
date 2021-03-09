@@ -26,9 +26,9 @@ app.get(/.*/, function (req, res) {
 const port = process.env.PORT || 8000;
 app.listen(port);
 
-app.post(/.*/, function (req, res) {
-  res.setHeader('Content-Type','application/json');
-})
+// app.post(/.*/, function (req, res) {
+//   res.setHeader('Content-Type','application/json');
+// })
 app.post('/api/login',function(req,res){
 
   let email=req.body.email;
@@ -1570,8 +1570,6 @@ function checkPassword(user_id,password,callback){
           }
         } 
       });
-      
-      
     }
   })
 }

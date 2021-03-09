@@ -339,6 +339,7 @@ export default {
                  let request=new XMLHttpRequest();
                 
                  request.open('POST','https://scripta-app.herokuapp.com/api/validate_password');
+                 request.setRequestHeader('Content-Type','application/json');
                  let data=JSON.stringify({oldPassword:oldPassword,user_id:user_id});
                  request.send(data);                  
                     
