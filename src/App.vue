@@ -377,7 +377,7 @@ a{cursor: pointer;}
     }
 
 :disabled {
-      background-color: white;
+      background-color: rgba(0,0,0,0.1);
       color: rgba(0,0,0,0.1);
       border:none;
   }

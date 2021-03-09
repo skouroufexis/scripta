@@ -65,27 +65,30 @@ export default {
                 
                 request.open('POST','https://scripta-app.herokuapp.com/api/login');
                 request.setRequestHeader('Content-Type','application/json');
+
+                
+
                 let data=JSON.stringify({email:this.email,password:this.password});
                 request.send(data);                  
-                // let self=this;
+                let self=this;
                 request.onload = function (){        
+                        
+                    let response=JSON.parse(this.responseText);                    
+                        if(this.status==200){
                             
-                            alert(this.responseText);
-                    // let response=JSON.parse(this.responseText);                    
-                    //     if(this.status==200){
                             
-                    //         //save session_id to localStorage
-                    //         localStorage.setItem('session_id',response.session_id);
+                            // //save session_id to localStorage
+                            localStorage.setItem('session_id',response.session_id);
 
-                    //         //save user_id to localStorage
-                    //         localStorage.setItem('user_id',response.user_id);
+                            // //save user_id to localStorage
+                            localStorage.setItem('user_id',response.user_id);
 
-                    //         //go to home screen
-                    //         self.$emit('navigation',1,'Application title','index');
-                    //     }
-                    //     else{
-                    //         alert(response.message);
-                    //     }                    
+                            // //go to home screen
+                            self.$emit('navigation',1,'Application title','index');
+                        }
+                        else{
+                            alert(response.message);
+                        }                    
                 };
 
             }

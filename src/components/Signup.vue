@@ -137,28 +137,21 @@ export default {
                 //POST request with user credentials                    
                 let request= new XMLHttpRequest();    
                 request.open('POST','https://scripta-app.herokuapp.com/api/addNewUser');
-
+                request.setRequestHeader('Content-Type','application/json');
                 let data=JSON.stringify({user_name:this.username,user_email:this.email,user_password:this.password});
                 request.send(data);  
                 
                 let self=this;
-                request.onreadystatechange = function (){        
-                    if(this.readyState==4 && this.status==200){
-                    
-                    
-                    alert(this.responseText);
-
-                    if(this.responseText=='Account successfully created'){
-                        //redirect to login page
-                        self.gotoLogin();
-                    }
-                    else if(this.responseText== 'Email already in use'){
-                        //highlight email field
-                        self.setFocus(2);
-                    }
-                    
-
-                    }
+                request.onload = function (){                                                                                      
+                        if(this.responseText=='Account successfully created'){
+                            //redirect to login page
+                            self.gotoLogin();
+                        }
+                        else if(this.responseText=='Email already in use'){
+                            //highlight email field
+                            alert(this.responseText);
+                            self.setFocus(2);
+                        }
                 };
 
             }
