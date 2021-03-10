@@ -9,7 +9,8 @@ const port = process.env.PORT || 8080;
 // app.use(express.static('public'));
 // app.use("/api", express.static(path.join(__dirname,"dist")));
 // app.use(express.static(__dirname+'/dist/'));
-app.use('/', serveStatic(path.join(__dirname, 'dist')));
+// app.use('/', serveStatic(path.join(__dirname, 'dist')));
+app.use('/', express.static(path.join(__dirname, 'dist')));
 app.use(express.json());
 // app.use(cors());
 // app.get(/.*/,function(req,res){
