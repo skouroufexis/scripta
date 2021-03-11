@@ -72,30 +72,31 @@ export default {
           request.open('GET','https://scripta-app.herokuapp.com/api/navigate');        
           // set session_id header        
           if(session_id){
-            request.setRequestHeader('session_id', session_id);               
+            request.setRequestHeader('session_id', session_id);       
+            
+            //send request
+            request.send();  
+            
+            request.onload=function(){
+              
+            if(this.responseText!='unauthorized'){
+                          
+                self.navigate(1,'Scripta');
+
+              } 
+              else{
+                console.log(this.responseText);      
+                //redirect to login page          
+                self.navigate(0,'','login')       
+                
+              }  
+            }  
+            //set the background-colour of the home icon
+            let footerButtons=document.getElementsByClassName('button_main');
+            footerButtons[0].style.backgroundColor='rgb(0, 138, 138,0.1)';    
           }
 
-        //send request
-        request.send();  
-        
-        request.onload=function(){
-          
-        if(this.responseText!='unauthorized'){
-                      
-            self.navigate(1,'Scripta');
-
-          } 
-          else{
-            console.log(this.responseText);      
-            //redirect to login page          
-            self.navigate(0,'','login')       
-            
-          }  
-        }  
-
-        //set the background-colour of the home icon
-        let footerButtons=document.getElementsByClassName('button_main');
-        footerButtons[0].style.backgroundColor='rgb(0, 138, 138,0.1)';   
+         
 
  },
  

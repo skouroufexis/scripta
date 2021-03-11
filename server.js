@@ -1026,8 +1026,7 @@ app.delete('/api/dossier',function(req,res){
 
 app.get('/api/navigate',function(req,res){
   
-  if(req.header('session_id')!='null'){
-    
+  if(req.header('session_id')){    
     res.writeHead(200);            
     res.end('navigation successfull'); 
   }
