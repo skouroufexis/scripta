@@ -1091,9 +1091,11 @@ app.get('/api/initials',function(req,res){
     res.end('Query error: '+error);
   }
   else{
-    res.writeHead(200);        
-    res.json({user_name:results[0].user_name});
-    res.end();
+    res.writeHead(200);  
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify({user_name:results[0].user_name}));      
+    
+    
   }
   })
 })
