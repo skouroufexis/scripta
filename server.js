@@ -1,9 +1,9 @@
 
 const express = require('express');
-const serveStatic = require("serve-static");
-const path = require('path');
+
+
 const app=express();
-var cors = require('cors');
+// var cors = require('cors');
 
 app.use('/', express.static('dist'));
 // app.use(serveStatic(__dirname + "/dist"));
