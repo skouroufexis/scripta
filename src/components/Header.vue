@@ -66,7 +66,7 @@ export default {
 
         //gets the user initials
         userInitials:function(){
-        //    let self=this;
+           let self=this;
            let request= new XMLHttpRequest();            
             request.open('GET','https://scripta-app.herokuapp.com/api/initials');        
 
@@ -80,18 +80,18 @@ export default {
             request.send();  
 
          request.onload=function(){
-             alert('a');
              
-            // if(this.status==200){
-            //     let response=JSON.parse(this.responseText);
-            //     let initials=response.user_name;
-            //         alert(response);
-            //         initials=initials.substr(0,1);
-            //         self.initials=initials;
-            // } 
-            // else{
-            //       alert(this.responseText); 
-            // }  
+             
+            if(this.status==200){
+                let response=JSON.parse(this.responseText);
+                let initials=response.user_name;
+                    alert(response);
+                    initials=initials.substr(0,1);
+                    self.initials=initials;
+            } 
+            else{
+                  alert(this.responseText); 
+            }  
         }   
         },
         //opens the menu    
