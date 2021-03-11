@@ -5,8 +5,11 @@ const path = require('path');
 const app=express();
 var cors = require('cors');
 
+app.use(express.static('dist'));
+// app.use(serveStatic(__dirname + "/dist"));
+
 const port = process.env.PORT || 8080;
-// app.use(express.static('public'));
+
 // app.use("/api", express.static(path.join(__dirname,"dist")));
 // app.use(express.static(__dirname+'/dist/'));
 // app.use('/', serveStatic(path.join(__dirname, 'dist')));
