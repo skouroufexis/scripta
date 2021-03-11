@@ -79,7 +79,7 @@ export default {
                             
                             // //save session_id to localStorage
                             localStorage.setItem('session_id',response.session_id);
-
+                                
                             // //save user_id to localStorage
                             localStorage.setItem('user_id',response.user_id);
 

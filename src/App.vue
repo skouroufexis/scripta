@@ -82,17 +82,16 @@ export default {
         
         request.onload=function(){
           
-        if(this.responseText=='navigation successfull'){
+        if(this.responseText!='unauthorized'){
                       
             self.navigate(1,'Scripta');
 
           } 
           else{
             console.log(this.responseText);      
-            //redirect to login page
-          if(this.responseText=='unauthorized'){
+            //redirect to login page          
             self.navigate(0,'','login')       
-            }
+            
           }  
         }  
 
