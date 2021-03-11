@@ -16,9 +16,9 @@ const port = process.env.PORT || 8080;
 // app.use('/', express.static(path.join(__dirname, 'dist')));
 app.use(express.json());
 
-// app.get(/.*/,function(req,res){
-//   res.sendFile(__dirname+'/dist/index.html');
-// });
+app.get(/.*/,function(req,res){
+  res.sendFile(__dirname+'/dist/index.html');
+});
 
 
 
