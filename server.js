@@ -1083,16 +1083,16 @@ app.get('/api/expiry',function(req,res){
 
 app.get('/api/initials',function(req,res){
   let user_id=req.header('user_id');
-            query='SELECT user_name from users where user_id=?';
-            connection.query(query,[user_id],function(error,results){
-              if(error){
-                console.log('Query error: '+error);
-                res.writeHead(500);
-                res.end('Query error: '+error);
-              }
-              else{
-                res.end(JSON.stringify({user_name:results[0].user_name}));
-              }
+  let query='SELECT user_name from users where user_id=?';
+  connection.query(query,[user_id],function(error,results){
+  if(error){
+    console.log('Query error: '+error);
+    res.writeHead(500);
+    res.end('Query error: '+error);
+  }
+  else{
+    res.end(JSON.stringify({user_name:results[0].user_name}));
+  }
   })
 })
 
