@@ -16,6 +16,9 @@ const port = process.env.PORT || 8080;
 // app.use('/', express.static(path.join(__dirname, 'dist')));
 app.use(express.json());
 
+app.use(bodyParser.json({ limit: '50mb' }));
+
+
 app.get('/',function(req,res){
   res.sendFile(__dirname+'/dist/index.html');
 });
@@ -66,12 +69,12 @@ connection.connect((error)=>{
 })
 
 //setting max upload size to 30 MB
-let queryUpload='set global max_allowed_packet=30000000';
-connection.query(queryUpload,function(error,results){
-  if(error){
-    console.log(error);
-  }  
-})
+// let queryUpload='set global max_allowed_packet=30000000';
+// connection.query(queryUpload,function(error,results){
+//   if(error){
+//     console.log(error);
+//   }  
+// })
 
 
 app.post('/api/login', function(req,res){
