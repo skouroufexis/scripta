@@ -1083,6 +1083,7 @@ app.get('/api/expiry',function(req,res){
 
 app.get('/api/initials',function(req,res){
   let user_id=req.header('user_id');
+  console.log('USERID:'+ user_id)
   let query='SELECT user_name from users where user_id=?';
   connection.query(query,[user_id],function(error,results){
   if(error){

@@ -66,13 +66,13 @@ export default {
 
         //gets the user initials
         userInitials:function(){
-        //    let self=this;
+           let self=this;
            let request= new XMLHttpRequest();            
             request.open('GET','https://scripta-app.herokuapp.com/api/initials');        
 
             let session_id=localStorage.getItem('session_id');
             let user_id=localStorage.getItem('user_id');
-            
+            alert(user_id);
             request.setRequestHeader('session_id', session_id);               
             request.setRequestHeader('user_id', user_id);               
 
@@ -83,12 +83,12 @@ export default {
              
              
             if(this.status==200){
-                console.log(this.responseText);
-                // let response=JSON.parse(this.responseText);
-                // let initials=response.user_name;
-                //     alert(response);
-                //     initials=initials.substr(0,1);
-                //     self.initials=initials;
+                
+                let response=JSON.parse(this.responseText);
+                let initials=response.user_name;
+                    alert(response);
+                    initials=initials.substr(0,1);
+                    self.initials=initials;
             } 
             else{
                   alert(this.responseText); 
