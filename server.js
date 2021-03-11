@@ -809,7 +809,7 @@ app.put('/api/dossier-name',function(req,res){
 })
 
 app.put('/api/note',function(req,res){
-  if(req.header.session_id){
+  if(req.header('session_id')){
     let note_id=req.body.note_id;
     let title=req.body.title;
     let body=req.body.body;
@@ -837,7 +837,7 @@ app.put('/api/note',function(req,res){
 
 
 app.delete('/api/delete-user',function(req,res){
-  if(req.header.session_id){
+  if(req.header('session_id')){
     
     let user_id=req.body.user_id;
     let user_password=req.body.user_password;  
@@ -915,7 +915,7 @@ app.delete('/api/delete-user',function(req,res){
 });
 
 app.delete('/api/update-info',function(req,res){
-  if(req.header.session_id){
+  if(req.header('session_id')){
     let user_id=req.body.user_id;
     let user_name=req.body.user_name;
     let user_email=req.body.user_email;         
@@ -940,7 +940,7 @@ app.delete('/api/update-info',function(req,res){
 });
 
 app.delete('/api/attachment',function(req,res){
-  if(req.header.session_id){
+  if(req.header('session_id')){
     let attachment_id=req.body.attachment_id;
     let query = 'DELETE FROM attachments WHERE attachment_id=?';
     
@@ -964,7 +964,7 @@ app.delete('/api/attachment',function(req,res){
 });
 
 app.delete('/api/note-tag',function(req,res){
-  if(req.header.session_id)
+  if(req.header('session_id'))
   {
     let note_fk=req.body.note_fk;
     let tag_fk=req.body.tag_fk;  
@@ -991,7 +991,7 @@ app.delete('/api/note-tag',function(req,res){
   }
 })
 app.delete('/api/dossier',function(req,res){
-  if(req.header.session_id){
+  if(req.header('session_id')){
     let dossier_fk=data.dossier_fk;
             query='DELETE FROM notes WHERE dossier_fk=?';
             connection.query(query,[dossier_fk],function(error,results){
@@ -1039,6 +1039,7 @@ app.get('/api/navigate',function(req,res){
 }); 
 
 app.get('/api/expiry',function(req,res){
+  console.log('HEADERRRRRR:'+ req.header('session_id'));
   if(req.header('session_id')){
     
      //returns the time difference between current time and the timestamp of the stored session_id
@@ -1116,7 +1117,7 @@ app.get('/api/logout',function(req,res){
 })
 
 app.get('/api/account',function(req,res){
-  if(req.header.session_id){
+  if(req.header('session_id')){
     let user_id=req.header('user_id');
     let query='SELECT * FROM users WHERE user_id=?';
     connection.query(query,[user_id],function(error,results){
@@ -1148,7 +1149,7 @@ app.get('/api/account',function(req,res){
 })
 
 app.get('/api/get-user-dossiers',function(req,res){
-  if(req.header.session_id){
+  if(req.header('session_id')){
     let query;
     let user_id=req.header('user_id');
     let inputValue=req.header('input_value');
@@ -1209,7 +1210,7 @@ app.get('/api/get-user-dossiers',function(req,res){
 
 
 app.get('/api/get-user-tags',function(req,res){
-  if(req.header.session_id){
+  if(req.header('session_id')){
     let query;
             let user_id=req.header('user_id');
             let inputValue=req.header('input_value');
@@ -1341,7 +1342,7 @@ app.get('/api/get-dossiers-info',function(req,res){
 });
 
 app.get('/api/user-notes',function(req,res){
-  if(req.header.session_id)
+  if(req.header('session_id'))
   {
     let user_id=req.header('user_id');
     let dossier_id=req.header('dossier_id');
@@ -1401,7 +1402,7 @@ app.get('/api/note-dossier',function(req,res){
 });
 
 app.get('/api/note-attachments',function(req,res){
-  if(req.header.session_id)
+  if(req.header('session_id'))
   {
     let note_fk=req.header('note_fk');            
     let query='SELECT * FROM attachments WHERE note_fk=?';
