@@ -16,7 +16,7 @@ const port = process.env.PORT || 8080;
 // app.use('/', express.static(path.join(__dirname, 'dist')));
 app.use(express.json());
 
-app.use(bodyParser.json({ limit: '50mb' }));
+// app.use(bodyParser.json({ limit: '50mb' }));
 
 
 app.get('/',function(req,res){
@@ -259,6 +259,20 @@ app.post('/api/validate_password',function(req,res){
 })
 
 app.post('/api/addNewNote',function(req,res){
+
+let queryUpload='set global max_allowed_packet=30000000';
+connection.query(queryUpload,function(error,results){
+  if(error){
+    console.log(error);
+    res.writeHead(500);
+    res.end('Query error '+error);
+  }  
+  else{
+    console.log(results);
+  }
+})
+
+
   if(req.header('session_id'))
   {let query;  
 
