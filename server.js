@@ -66,12 +66,12 @@ connection.connect((error)=>{
 })
 
 //setting max upload size to 30 MB
-// let queryUpload='set global max_allowed_packet=30000000';
-// connection.query(queryUpload,function(error,results){
-//   if(error){
-//     console.log(error);
-//   }  
-// })
+let queryUpload='set global max_allowed_packet=30000000';
+connection.query(queryUpload,function(error,results){
+  if(error){
+    console.log(error);
+  }  
+})
 
 
 app.post('/api/login', function(req,res){
