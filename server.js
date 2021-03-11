@@ -1084,7 +1084,7 @@ app.get('/api/expiry',function(req,res){
 app.get('/api/initials',function(req,res){
   let user_id=req.header('user_id');
   console.log('USERID:'+ user_id)
-  let query='SELECT user_name from users where user_id=?';
+  let query='SELECT user_name FROM users WHERE user_id=?';
   connection.query(query,[user_id],function(error,results){
   if(error){
     console.log('Query error: '+error);
@@ -1092,7 +1092,7 @@ app.get('/api/initials',function(req,res){
     res.end('Query error: '+error);
   }
   else{
-    res.setHeader('Content-Type', 'application/json');
+    // res.setHeader('Content-Type', 'application/json');
     res.writeHead(200);      
     res.end(JSON.stringify({user_name:results[0].user_name}));      
     
