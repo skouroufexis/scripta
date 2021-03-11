@@ -85,10 +85,10 @@ export default {
             if(this.status==200){
                 console.log(this.responseText);
                 let response=JSON.parse(this.responseText);
-                let initials=response.user_name;
+                // let initials=response.user_name;
                     
-                    initials=initials.substr(0,1);
-                    self.initials=initials;
+                //     initials=initials.substr(0,1);
+                    self.initials='a';
             } 
             else{
                   alert(this.responseText); 
