@@ -83,7 +83,7 @@ export default {
              
              
             if(this.status==200){
-                alert('ok');
+                console.log(this.responseText);
                 // let response=JSON.parse(this.responseText);
                 // let initials=response.user_name;
                 //     alert(response);
