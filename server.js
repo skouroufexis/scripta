@@ -1091,14 +1091,13 @@ app.get('/api/initials',function(req,res){
     res.end('Query error: '+error);
   }
   else{
-    
-    res.writeHead(200,{'Content-Type':'application/json'});
-    
-    res.send(JSON.stringify({user_name:results[0].user_name}));
-    res.end();
+    res.writeHead(200);    
+    let response={user_name:results[0].user_name};
+    console.log(response);
+    res.end(JSON.stringify(response));
   }
-  });
-});
+  })
+})
 
 app.get('/api/logout',function(req,res){
   let session_id=req.header('session_id');            
