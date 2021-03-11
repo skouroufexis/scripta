@@ -1039,6 +1039,7 @@ app.get('/api/navigate',function(req,res){
 }); 
 
 app.get('/api/expiry',function(req,res){
+  console.log(req.headers);
   console.log('HEADERRRRRR:'+ req.header('session_id'));
   if(req.header('session_id')){
     
