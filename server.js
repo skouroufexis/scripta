@@ -1091,8 +1091,8 @@ app.get('/api/initials',function(req,res){
     res.end('Query error: '+error);
   }
   else{
-    res.setHeader('Content-Type', 'application/json');
-    res.writeHead(200);
+    
+    res.writeHead(200,{'Content-Type':'application/json'});
     
     res.end(JSON.stringify({user_name:results[0].user_name}));
   }
