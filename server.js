@@ -838,6 +838,7 @@ app.put('/api/note',function(req,res){
 
 app.delete('/api/delete-user',function(req,res){
   if(req.header.session_id){
+    
     let user_id=req.body.user_id;
     let user_password=req.body.user_password;  
      //check if user-provided password matches the one in the
@@ -1025,6 +1026,7 @@ app.delete('/api/dossier',function(req,res){
 
 app.get('/api/navigate',function(req,res){
   if(req.header.session_id){
+    console.log('sessionID:'+req.header.session_id)
     res.writeHead(200);            
     res.end('navigation successfull'); 
   }
@@ -1103,6 +1105,8 @@ app.get('/api/logout',function(req,res){
     }
     else{      
       res.writeHead(200);
+      console.log('session deleted');
+      req.header.session_id;
       res.end('Session successfully deleted');
     }
   })
