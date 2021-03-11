@@ -1501,6 +1501,7 @@ app.get('/api/recent-notes',function(req,res){
         res.end('Query error: '+error);
       }
       else{
+        res.writeHead(200);
         let response = [];
         results.forEach(r=>{
           response.push({note_id:r.note_id,
