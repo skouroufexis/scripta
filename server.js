@@ -1091,10 +1091,10 @@ app.get('/api/initials',function(req,res){
     res.end('Query error: '+error);
   }
   else{
-    res.writeHead(200);    
+    res.writeHead(200,{'Content-Type':'application/json'});    
     let response={user_name:results[0].user_name};
     console.log(response);
-    res.send(JSON.stringify(response));
+    res.end(JSON.stringify(response));
   }
   })
 })
