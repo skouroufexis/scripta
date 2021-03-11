@@ -80,6 +80,7 @@ export default {
             request.send();  
 
          request.onload=function(){
+             console.log(this.responseText);
             if(this.status==200){
                 let response=JSON.parse(this.responseText);
                 let initials=response.user_name;
