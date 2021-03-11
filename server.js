@@ -1098,6 +1098,7 @@ app.get('/api/logout',function(req,res){
   let query='DELETE FROM sessions WHERE session_id=?';
 
   connection.query(query,[session_id],function(error,results){
+    console.log(results);
     if(error){
       console.log('Query error: '+error);
       res.writeHead(500)
@@ -1105,8 +1106,7 @@ app.get('/api/logout',function(req,res){
     }
     else{      
       res.writeHead(200);
-      console.log('session deleted');
-      req.header.session_id;
+      console.log('session deleted');      
       res.end('Session successfully deleted');
     }
   })
