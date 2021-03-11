@@ -83,12 +83,12 @@ export default {
              
              
             if(this.status==200){
-                alert(this.responseText);
-                // let response=JSON.parse(this.responseText);
-                // let initials=response.user_name;
+                
+                let response=JSON.parse(this.responseText);
+                let initials=response.user_name;
                     
-                //     initials=initials.substr(0,1);
-                    self.initials='a';
+                    initials=initials.substr(0,1);
+                    self.initials=initials;
             } 
             else{
                   alert(this.responseText); 

@@ -16,7 +16,7 @@ const port = process.env.PORT || 8080;
 // app.use('/', express.static(path.join(__dirname, 'dist')));
 app.use(express.json());
 
-app.get(/.*/,function(req,res){
+app.get('/',function(req,res){
   res.sendFile(__dirname+'/dist/index.html');
 });
 
@@ -50,7 +50,7 @@ let connection=mysql.createConnection(
     port:'3306',
     user:'il35nt2o2zwx9nng',
     database:'itlw9u5bloej7hoh',
-    password:'c0anxpcjz3csgtwu',
+    password:'c0anxpcjz3csgtwu'
   }
 );
 
@@ -1096,7 +1096,7 @@ app.get('/api/initials',function(req,res){
   else{
     // res.setHeader('Content-Type', 'application/json');
     res.writeHead(200);      
-    res.end(user_id);
+    res.end(JSON.stringify({user_name:results[0].user_name}));
     
     
   }
