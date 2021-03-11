@@ -203,7 +203,7 @@ app.post('/api/addNewUser',function(req,res){
 });
 
 app.post('/api/validate_password',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let query= 'SELECT * FROM users WHERE user_id=?';
     let oldPassword=req.body.oldPassword;
     let user_id=req.body.user_id;
@@ -256,7 +256,7 @@ app.post('/api/validate_password',function(req,res){
 })
 
 app.post('/api/addNewNote',function(req,res){
-  if(authenticate())
+  if(req.header.session_id)
   {let query;  
 
   let user_id=req.header.user_id;              
@@ -544,7 +544,7 @@ app.post('/api/addNewNote',function(req,res){
 
 
 app.post('/api/attachment',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let query='INSERT INTO attachments (attachment_name,note_fk) VALUES(?,?)';
     req.body.forEach(d=>{
       let attachment_name=d.attachment_name;
@@ -576,7 +576,7 @@ app.post('/api/attachment',function(req,res){
 })
 
 app.post('/api/notesTags',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let user_fk=req.body.user_fk;
     let tag_name=req.body.tag_name;
     let note_fk=req.body.note_fk;
@@ -659,7 +659,7 @@ app.post('/api/notesTags',function(req,res){
 
 app.put('/api/update_password',function(req,res){
   
-  if(authenticate()){
+  if(req.header.session_id){
     
     let user_id=req.body.user_id;
     let user_password=req.body.user_password;         
@@ -696,7 +696,7 @@ app.put('/api/update_password',function(req,res){
 })
 
 app.put('/api/update-info',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let user_id=req.body.user_id;
     let user_name=req.body.user_name;
     let user_email=req.body.user_email;         
@@ -724,7 +724,7 @@ app.put('/api/update-info',function(req,res){
 
  //assigns a single note to a new dossier
 app.put('/api/assign-new-dossier',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let user_fk=req.body.user_fk;
     let note_id=req.body.note_id;
     let dossier_name=req.body.dossier_name;
@@ -767,7 +767,7 @@ app.put('/api/assign-new-dossier',function(req,res){
 })
 
 app.put('/api/dossier-name',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let user_id=req.body.user_id;
     let dossier_fk=req.body.dossier_fk;
     let dossier_name=req.body.dossier_name;
@@ -809,7 +809,7 @@ app.put('/api/dossier-name',function(req,res){
 })
 
 app.put('/api/note',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let note_id=req.body.note_id;
     let title=req.body.title;
     let body=req.body.body;
@@ -837,7 +837,7 @@ app.put('/api/note',function(req,res){
 
 
 app.delete('/api/delete-user',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let user_id=req.body.user_id;
     let user_password=req.body.user_password;  
      //check if user-provided password matches the one in the
@@ -865,6 +865,46 @@ app.delete('/api/delete-user',function(req,res){
                 res.end('Wrong password');
               }
             });
+
+            //Compares the user inputted password with the one stored in the database
+            function checkPassword(user_id,password,callback){
+              let query='SELECT user_password FROM users WHERE user_id=?';
+              
+
+              
+
+              connection.query(query,[user_id],function(error,results){
+                if(error){
+                  res.writeHead(400);
+                  res.end('Query error: '+error);
+
+                }
+                else{
+                  let hash=results[0].user_password;                
+                  //check password
+                  bcrypt.compare(password, hash, function(error, result) {
+                    if(error){
+                      console.log('Password validation error: '+error);
+                      res.writeHead(500);              
+                      res.end('Password validation error:'+error);
+                    }
+                    else
+                    {
+                      
+                      if(result==true){//hashed password matches the one stored in the database                
+                        callback(true)
+                      }
+                      else{              
+                      callback(false);
+                        
+                      }
+                    } 
+                  });
+                }
+              })
+            }  
+
+
   }
   else{
     console.log('authentication failed');
@@ -874,7 +914,7 @@ app.delete('/api/delete-user',function(req,res){
 });
 
 app.delete('/api/update-info',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let user_id=req.body.user_id;
     let user_name=req.body.user_name;
     let user_email=req.body.user_email;         
@@ -899,7 +939,7 @@ app.delete('/api/update-info',function(req,res){
 });
 
 app.delete('/api/attachment',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let attachment_id=req.body.attachment_id;
     let query = 'DELETE FROM attachments WHERE attachment_id=?';
     
@@ -923,7 +963,7 @@ app.delete('/api/attachment',function(req,res){
 });
 
 app.delete('/api/note-tag',function(req,res){
-  if(authenticate())
+  if(req.header.session_id)
   {
     let note_fk=req.body.note_fk;
     let tag_fk=req.body.tag_fk;  
@@ -950,7 +990,7 @@ app.delete('/api/note-tag',function(req,res){
   }
 })
 app.delete('/api/dossier',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let dossier_fk=data.dossier_fk;
             query='DELETE FROM notes WHERE dossier_fk=?';
             connection.query(query,[dossier_fk],function(error,results){
@@ -984,7 +1024,7 @@ app.delete('/api/dossier',function(req,res){
 
 
 app.get('/api/navigate',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     res.writeHead(200);            
     res.end('navigation successfull'); 
   }
@@ -996,7 +1036,7 @@ app.get('/api/navigate',function(req,res){
 }); 
 
 app.get('/api/expiry',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
      //returns the time difference between current time and the timestamp of the stored session_id
      let query='SELECT TIMEDIFF((SELECT time FROM sessions where session_id =?),now())';
      connection.query(query,[req.header.session_id],function(error,results){
@@ -1061,8 +1101,7 @@ app.get('/api/logout',function(req,res){
       res.writeHead(500)
       res.end('Query error: '+error);
     }
-    else{
-      
+    else{      
       res.writeHead(200);
       res.end('Session successfully deleted');
     }
@@ -1070,7 +1109,7 @@ app.get('/api/logout',function(req,res){
 })
 
 app.get('/api/account',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let user_id=req.header.user_id;
     let query='SELECT * FROM users WHERE user_id=?';
     connection.query(query,[user_id],function(error,results){
@@ -1102,7 +1141,7 @@ app.get('/api/account',function(req,res){
 })
 
 app.get('/api/get-user-dossiers',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let query;
     let user_id=req.header.user_id;
     let inputValue=req.header.input_value;
@@ -1163,7 +1202,7 @@ app.get('/api/get-user-dossiers',function(req,res){
 
 
 app.get('/api/get-user-tags',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let query;
             let user_id=req.header.user_id;
             let inputValue=req.header.input_value;
@@ -1229,7 +1268,7 @@ app.get('/api/get-user-tags',function(req,res){
 
 
 app.get('/api/get-dossiers-info',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let query;
     let user_id=req.header.user_id;
     let userDossiers=[];
@@ -1295,7 +1334,7 @@ app.get('/api/get-dossiers-info',function(req,res){
 });
 
 app.get('/api/user-notes',function(req,res){
-  if(authenticate())
+  if(req.header.session_id)
   {
     let user_id=req.header.user_id;
     let dossier_id=req.header.dossier_id;
@@ -1331,7 +1370,7 @@ app.get('/api/user-notes',function(req,res){
 });
 
 app.get('/api/note-dossier',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let dossier_fk=req.header.dossier_fk;
     let query='SELECT * FROM userDossier WHERE userDossier_id=?';
     connection.query(query,[dossier_fk],function(error,results){
@@ -1355,7 +1394,7 @@ app.get('/api/note-dossier',function(req,res){
 });
 
 app.get('/api/note-attachments',function(req,res){
-  if(authenticate())
+  if(req.header.session_id)
   {
     let note_fk=req.header.note_fk;            
     let query='SELECT * FROM attachments WHERE note_fk=?';
@@ -1385,7 +1424,7 @@ app.get('/api/note-attachments',function(req,res){
 });
 
 app.get('/api/note-tags',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let note_fk=req.header.note_fk;
     let query='SELECT * FROM notesTags WHERE note_fk=?';     
 
@@ -1414,7 +1453,7 @@ app.get('/api/note-tags',function(req,res){
 });
 
 app.get('/api/user-tags',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let userTag_id=req.header.usertag_id;            
     let query='SELECT * FROM userTags WHERE userTag_id=?';     
     connection.query(query,[userTag_id],function(error,results){
@@ -1442,7 +1481,7 @@ app.get('/api/user-tags',function(req,res){
 });
 
 app.get('/api/recent-notes',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let user_id=req.header.user_id;
     let query='SELECT * FROM notes WHERE user_fk=? ORDER BY note_id DESC LIMIT 3';
     connection.query(query,[user_id],function(error,results){
@@ -1477,7 +1516,7 @@ app.get('/api/recent-notes',function(req,res){
 })
 
 app.get('/api/query-note',function(req,res){
-  if(authenticate()){
+  if(req.header.session_id){
     let user_id=req.header.user_id;
     let query_input=req.header.query_input;
         query_input='%'+query_input+'%';
@@ -1539,55 +1578,6 @@ app.get('/api/query-note',function(req,res){
   
 // }).listen(port);
 //check if user_session token exists in headers
-function authenticate(){
-
-  if(req.header.session_id){     
-    
-    return true;
-    
-  }
-  else{        
-    return false;
-  }          
-}
-
-//Compares the user inputted password with the one stored in the database
-function checkPassword(user_id,password,callback){
-  let query='SELECT user_password FROM users WHERE user_id=?';
-  
-
-  
-
-  connection.query(query,[user_id],function(error,results){
-    if(error){
-      res.writeHead(400);
-      res.end('Query error: '+error);
-
-    }
-    else{
-      let hash=results[0].user_password;                
-      //check password
-      bcrypt.compare(password, hash, function(error, result) {
-        if(error){
-          console.log('Password validation error: '+error);
-          res.writeHead(500);              
-          res.end('Password validation error:'+error);
-        }
-        else
-        {
-          
-          if(result==true){//hashed password matches the one stored in the database                
-            callback(true)
-          }
-          else{              
-          callback(false);
-            
-          }
-        } 
-      });
-    }
-  })
-}
 
 app.listen(port);
 console.log("SSSERRVERRRR");
