@@ -297,7 +297,7 @@ app.post('/api/addNewNote',function(req,res){
     formattedDate=formattedDate[2]+':'+formattedDate[1]+':'+formattedDate[0];
 
     //format time according to mysql format
-    let formattedTime=data.time;
+    let formattedTime=req.body.time;
     formattedTime=formattedTime+':00';       
 
     //add record to note with or without dossier values
@@ -992,7 +992,7 @@ app.delete('/api/note-tag',function(req,res){
 })
 app.delete('/api/dossier',function(req,res){
   if(req.header('session_id')){
-    let dossier_fk=data.dossier_fk;
+    let dossier_fk=req.body.dossier_fk;
             query='DELETE FROM notes WHERE dossier_fk=?';
             connection.query(query,[dossier_fk],function(error,results){
               if(error){
