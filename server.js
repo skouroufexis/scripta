@@ -1094,7 +1094,7 @@ app.get('/api/initials',function(req,res){
     res.writeHead(200);    
     let response={user_name:results[0].user_name};
     console.log(response);
-    res.end(JSON.stringify(response));
+    res.send(JSON.stringify(response));
   }
   })
 })

@@ -84,7 +84,7 @@ export default {
             if(this.status==200){
                 let response=JSON.parse(this.responseText);
                 let initials=response.user_name;
-                    console.log(initials);
+                    alert(response);
                     initials=initials.substr(0,1);
                     self.initials=initials;
             } 
