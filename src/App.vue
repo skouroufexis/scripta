@@ -56,8 +56,6 @@ export default {
 
  mounted:function(){
   
-  
-
         //call function to check if session_id is expired when the window closes
         this.checkExpiry();
 
@@ -143,6 +141,7 @@ export default {
       //get session_id
       let session_id=localStorage.getItem('session_id');
 
+      console.log('session_id: '+session_id);
       //send GET request 
       let request=new XMLHttpRequest();
 

@@ -1039,6 +1039,7 @@ app.get('/api/navigate',function(req,res){
 
 app.get('/api/expiry',function(req,res){
   if(req.header.session_id){
+    console.log('SESSION ID FOUND');
      //returns the time difference between current time and the timestamp of the stored session_id
      let query='SELECT TIMEDIFF((SELECT time FROM sessions where session_id =?),now())';
      connection.query(query,[req.header.session_id],function(error,results){
@@ -1060,6 +1061,7 @@ app.get('/api/expiry',function(req,res){
          //if more than 7 days have passed (168 hours), flag session as expired
          if(hours<(-168)){                                    
            console.log('session expired');
+           res.writeHead(400);
            res.end('session expired');                                    
          }
          else{
@@ -1075,7 +1077,7 @@ app.get('/api/expiry',function(req,res){
     res.writeHead(400);          
     res.end('unauthorized');
   }
-})
+});
 
 app.get('/api/initials',function(req,res){
   let user_id=req.header.user_id;
