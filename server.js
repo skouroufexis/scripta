@@ -1092,7 +1092,8 @@ app.get('/api/initials',function(req,res){
   }
   else{
     res.writeHead(200);        
-    res.end.json({user_name:results[0].user_name});
+    res.json({user_name:results[0].user_name});
+    res.end();
   }
   })
 })
