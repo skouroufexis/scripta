@@ -256,7 +256,7 @@ app.post('/api/addNewNote',function(req,res){
   if(authenticate())
   {let query;  
 
-  let user_id=req.headers.user_id;              
+  let user_id=req.header.user_id;              
   let title=req.body.title;
   let body=req.body.body;   
 
@@ -980,23 +980,23 @@ app.delete('/api/dossier',function(req,res){
 });
 
 
-// app.get('/api/navigate',function(req,res){
-//   if(authenticate()){
-//     res.writeHead(200);            
-//     res.end('navigation successfull'); 
-//   }
-//   else{
-//     console.log('authentication failed');
-//     res.writeHead(400);          
-//     res.end('unauthorized');
-//   }
-// }); 
+app.get('/api/navigate',function(req,res){
+  if(authenticate()){
+    res.writeHead(200);            
+    res.end('navigation successfull'); 
+  }
+  else{
+    console.log('authentication failed');
+    res.writeHead(400);          
+    res.end('unauthorized');
+  }
+}); 
 
 app.get('/api/expiry',function(req,res){
   if(authenticate()){
      //returns the time difference between current time and the timestamp of the stored session_id
      let query='SELECT TIMEDIFF((SELECT time FROM sessions where session_id =?),now())';
-     connection.query(query,[req.headers.session_id],function(error,results){
+     connection.query(query,[req.header.session_id],function(error,results){
        if(error){
          console.log(error);
        }
@@ -1033,7 +1033,7 @@ app.get('/api/expiry',function(req,res){
 })
 
 app.get('/api/initials',function(req,res){
-  let user_id=req.headers.user_id;
+  let user_id=req.header.user_id;
             query='SELECT user_name from users where user_id=?';
             connection.query(query,[user_id],function(error,results){
               if(error){
@@ -1048,7 +1048,7 @@ app.get('/api/initials',function(req,res){
 })
 
 app.get('/api/logout',function(req,res){
-  let session_id=req.headers.session_id;            
+  let session_id=req.header.session_id;            
             
   let query='DELETE FROM sessions WHERE session_id=?';
 
@@ -1068,7 +1068,7 @@ app.get('/api/logout',function(req,res){
 
 app.get('/api/account',function(req,res){
   if(authenticate()){
-    let user_id=req.headers.user_id;
+    let user_id=req.header.user_id;
     let query='SELECT * FROM users WHERE user_id=?';
     connection.query(query,[user_id],function(error,results){
       if(error){
@@ -1101,8 +1101,8 @@ app.get('/api/account',function(req,res){
 app.get('/api/get-user-dossiers',function(req,res){
   if(authenticate()){
     let query;
-    let user_id=req.headers.user_id;
-    let inputValue=req.headers.input_value;
+    let user_id=req.header.user_id;
+    let inputValue=req.header.input_value;
         inputValue=decodeURI(inputValue);
     //user queries a dossier name
     if(inputValue){
@@ -1162,8 +1162,8 @@ app.get('/api/get-user-dossiers',function(req,res){
 app.get('/api/get-user-tags',function(req,res){
   if(authenticate()){
     let query;
-            let user_id=req.headers.user_id;
-            let inputValue=req.headers.input_value;
+            let user_id=req.header.user_id;
+            let inputValue=req.header.input_value;
                 inputValue=decodeURI(inputValue);
             
                 //user queries a tag name
@@ -1228,7 +1228,7 @@ app.get('/api/get-user-tags',function(req,res){
 app.get('/api/get-dossiers-info',function(req,res){
   if(authenticate()){
     let query;
-    let user_id=req.headers.user_id;
+    let user_id=req.header.user_id;
     let userDossiers=[];
     let dossierContents=[];
     query='SELECT dossier_name, userDossier_id FROM userDossier WHERE user_fk =?';
@@ -1294,8 +1294,8 @@ app.get('/api/get-dossiers-info',function(req,res){
 app.get('/api/user-notes',function(req,res){
   if(authenticate())
   {
-    let user_id=req.headers.user_id;
-    let dossier_id=req.headers.dossier_id;
+    let user_id=req.header.user_id;
+    let dossier_id=req.header.dossier_id;
     let query='SELECT * FROM notes WHERE dossier_fk=? AND user_fk=?';
 
     connection.query(query,[dossier_id,user_id],function(error,results){
@@ -1329,7 +1329,7 @@ app.get('/api/user-notes',function(req,res){
 
 app.get('/api/note-dossier',function(req,res){
   if(authenticate()){
-    let dossier_fk=req.headers.dossier_fk;
+    let dossier_fk=req.header.dossier_fk;
     let query='SELECT * FROM userDossier WHERE userDossier_id=?';
     connection.query(query,[dossier_fk],function(error,results){
       if(error){
@@ -1354,7 +1354,7 @@ app.get('/api/note-dossier',function(req,res){
 app.get('/api/note-attachments',function(req,res){
   if(authenticate())
   {
-    let note_fk=req.headers.note_fk;            
+    let note_fk=req.header.note_fk;            
     let query='SELECT * FROM attachments WHERE note_fk=?';
 
     connection.query(query,[note_fk],function(error,results){
@@ -1383,7 +1383,7 @@ app.get('/api/note-attachments',function(req,res){
 
 app.get('/api/note-tags',function(req,res){
   if(authenticate()){
-    let note_fk=req.headers.note_fk;
+    let note_fk=req.header.note_fk;
     let query='SELECT * FROM notesTags WHERE note_fk=?';     
 
     connection.query(query,[note_fk],function(error,results){
@@ -1412,7 +1412,7 @@ app.get('/api/note-tags',function(req,res){
 
 app.get('/api/user-tags',function(req,res){
   if(authenticate()){
-    let userTag_id=req.headers.usertag_id;            
+    let userTag_id=req.header.usertag_id;            
     let query='SELECT * FROM userTags WHERE userTag_id=?';     
     connection.query(query,[userTag_id],function(error,results){
       if(error){
@@ -1440,11 +1440,12 @@ app.get('/api/user-tags',function(req,res){
 
 app.get('/api/recent-notes',function(req,res){
   if(authenticate()){
-    let user_id=req.headers.user_id;
+    let user_id=req.header.user_id;
     let query='SELECT * FROM notes WHERE user_fk=? ORDER BY note_id DESC LIMIT 3';
     connection.query(query,[user_id],function(error,results){
       if(error){
         console.log(error);
+        
         res.writeHead(500);
         res.end('Query error: '+error);
       }
@@ -1474,8 +1475,8 @@ app.get('/api/recent-notes',function(req,res){
 
 app.get('/api/query-note',function(req,res){
   if(authenticate()){
-    let user_id=req.headers.user_id;
-    let query_input=req.headers.query_input;
+    let user_id=req.header.user_id;
+    let query_input=req.header.query_input;
         query_input='%'+query_input+'%';
     let query='SELECT * FROM notes WHERE user_fk=? AND title LIKE ? ORDER BY TITLE';
     connection.query(query,[user_id,query_input],function(error,results){
@@ -1537,7 +1538,7 @@ app.get('/api/query-note',function(req,res){
 //check if user_session token exists in headers
 function authenticate(){
 
-  if(req.headers.session_id){     
+  if(req.header.session_id){     
     
     return true;
     
