@@ -980,17 +980,17 @@ app.delete('/api/dossier',function(req,res){
 });
 
 
-app.get('/api/navigate',function(req,res){
-  if(authenticate()){
-    res.writeHead(200);            
-    res.end('navigation successfull'); 
-  }
-  else{
-    console.log('authentication failed');
-    res.writeHead(400);          
-    res.end('unauthorized');
-  }
-}); 
+// app.get('/api/navigate',function(req,res){
+//   if(authenticate()){
+//     res.writeHead(200);            
+//     res.end('navigation successfull'); 
+//   }
+//   else{
+//     console.log('authentication failed');
+//     res.writeHead(400);          
+//     res.end('unauthorized');
+//   }
+// }); 
 
 app.get('/api/expiry',function(req,res){
   if(authenticate()){
