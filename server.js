@@ -1094,10 +1094,11 @@ app.get('/api/initials',function(req,res){
     
     res.writeHead(200,{'Content-Type':'application/json'});
     
-    res.end(JSON.stringify({user_name:results[0].user_name}));
+    res.send(JSON.stringify({user_name:results[0].user_name}));
+    res.end();
   }
-  })
-})
+  });
+});
 
 app.get('/api/logout',function(req,res){
   let session_id=req.header('session_id');            
