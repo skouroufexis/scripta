@@ -3,7 +3,7 @@ const express = require('express');
 
 
 const app=express();
-// var cors = require('cors');
+var cors = require('cors');
 
 app.use('/', express.static('dist'));
 // app.use(serveStatic(__dirname + "/dist"));
@@ -15,7 +15,7 @@ const port = process.env.PORT || 8080;
 // app.use('/', serveStatic(path.join(__dirname, 'dist')));
 // app.use('/', express.static(path.join(__dirname, 'dist')));
 app.use(express.json({limit: '50mb'}));
-
+app.use(cors());
 // app.use(bodyParser.json({ limit: '50mb' }));
 
 
@@ -26,7 +26,7 @@ app.get('/',function(req,res){
 
 
 
-// app.use(cors());
+
 // app.get(/.*/,function(req,res){
 //   res.sendFile(__dirname+'/dist/index.html');
 // });
