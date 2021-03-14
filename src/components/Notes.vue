@@ -20,12 +20,12 @@
                             <i class="fas fa-feather-alt"> {{note.title}} </i>   
                         </div>
         
-                        <button class="col record " v-on:click='showNote(note.note_id,note.title,note.body,
+                        <button class="col-2 record " v-on:click='showNote(note.note_id,note.title,note.body,
                                                                note.date,note.time,note.dossier_fk,note.user_fk)'>
                             open
                         </button>
 
-                        <button class="col record " v-on:click='deleteNote(note.note_id)'>
+                        <button class="col-2 record " v-on:click='deleteNote(note.note_id)'>
                             <i class="far fa-trash-alt"></i>    
                         </button>
         
