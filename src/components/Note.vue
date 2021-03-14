@@ -14,7 +14,7 @@
         
                     <div class="row">
                         
-                        <div class="darkcyan"><b>{{this.time}}</b></div>
+                        <div class="right2 darkcyan"><b>{{this.time}}</b></div>
                         
         
                         <div class="left2 darkcyan"><b> {{this.date}}</b> </div>   
