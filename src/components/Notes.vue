@@ -14,18 +14,18 @@
                 
                 <div class="row"><b> <i class="fas fa-folder"> {{this.dossier.dossier_name}} </i></b></div>
     
-                <div style="height:auto; max-height: 300px; overflow-y: scroll;">
+                <div style="height:auto; max-height: 300px; overflow-y: scroll;" class="top2">
                     <div class="row" v-for="note in notes" :key="note.note_id">
-                        <div class="col record">
+                        <div class="col-8 record vertical-centre">
                             <i class="fas fa-feather-alt"> {{note.title}} </i>   
                         </div>
         
-                        <button class="col record" v-on:click='showNote(note.note_id,note.title,note.body,
+                        <button class="col record " v-on:click='showNote(note.note_id,note.title,note.body,
                                                                note.date,note.time,note.dossier_fk,note.user_fk)'>
                             open
                         </button>
 
-                        <button class="col record" v-on:click='deleteNote(note.note_id)'>
+                        <button class="col record " v-on:click='deleteNote(note.note_id)'>
                             <i class="far fa-trash-alt"></i>    
                         </button>
         
@@ -82,7 +82,7 @@ export default {
             //retrieve notes for this dossier
             let self=this;
             let request= new XMLHttpRequest();            
-            request.open('GET','https://scripta-app.herokuapp.com/api/user-notes');        
+            request.open('GET','http://localhost:8080/api/user-notes');        
 
             let session_id=localStorage.getItem('session_id');
             let user_id=localStorage.getItem('user_id');
@@ -131,10 +131,10 @@ export default {
                 let session_id=localStorage.getItem('session_id');            
                 let request=new XMLHttpRequest();
                                 
-                request.open('DELETE','https://scripta-app.herokuapp.com/api/note');
+                request.open('DELETE','http://localhost:8080/api/note');
 
                 request.setRequestHeader('session_id', session_id);
-                request.setRequestHeader('Content-Type','application/json');
+
                 let data=JSON.stringify({note_id:note_id});
                 request.send(data);                  
 
