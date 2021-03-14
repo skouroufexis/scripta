@@ -54,14 +54,17 @@
         
                 <!-- MODALS -->
                 <div class="container" id="titleModal">
-                        <button v-on:click='closeModal(1)'>OK</button><br>
+                        <button class="top1" v-on:click='closeModal(1)'>OK</button><br>
                         <input type="text" id="title">
                 </div>
         
-                <div class="container" id="calendarModal">
-                        <button v-on:click='closeModal(2)'>OK</button><br>
+                <div class="container">
+                        <div class="row full" id="calendarModal">
+                            <button v-on:click='closeModal(2)'>OK</button><br>
                         
                         <Calendario v-bind:months='months' v-on:updateToday='updateToday'/>
+                        </div>
+                        
                 </div>
         
                 <div class="container" id="textAreaModal">
@@ -74,10 +77,13 @@
     
         <!-- MODALS -->
          <div class="container">
-             <div class="container clockModal" id="clockModal">
-                        <button v-on:click='closeModal(4)'>OK</button><br>   
+             <div class="container " >
+                 <div class="row full clockModal" id="clockModal">
+                     <button class="ok" v-on:click='closeModal(4)'>OK</button><br>   
         
-                        <Clock  />
+                        <Clock id="clock"  />
+                 </div>
+                        
             </div>
 
              <div v-if='this.attachments!=""' class="container" id="attachmentsModal">
@@ -504,8 +510,7 @@ export default {
  
         // //create POST request
         let request= new XMLHttpRequest();    
-        request.open('POST','https://scripta-app.herokuapp.com/api/addNewNote');
-        request.setRequestHeader('Content-Type','application/json');
+        request.open('POST','http://localhost:8080/api/addNewNote');
         
         //set session_id in the request header
         let session_id=localStorage.getItem('session_id');  
@@ -631,8 +636,8 @@ main {position: relative; }
     z-index: 1;  
     top: 0;
     
-    margin-left: auto;
-    margin-right:auto;
+    left: 0;
+    margin-left: 0px;
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0);
@@ -643,6 +648,7 @@ main {position: relative; }
     align-items: center;
     transform: translateY(20px);
     transition: opacity 0.2s,transform 0.2s;
+    
     
 }
 
@@ -670,26 +676,30 @@ justify-content: center;
     position: absolute;
     z-index: 1;
     top: 0%;
-    margin-left: auto;
-    margin-right: auto;
+    left: 0%;
+    margin-left: 0%;
     height: 100%;
-    background-color: rgba(0,0,0,0);
-    
+    background-color: rgba(0,0,0,0);    
     display: none;
     opacity: 0;
     flex-direction: column;
     align-items: center;
     transform: translateY(20px);
-    transition: opacity 0.2s,transform 0.2s;    
+    transition: opacity 0.2s,transform 0.2s;  
+    padding-top: 2%;    
 }
+
+
+
 
 #title {
             width: 90%;
             background-color: rgb(0, 139, 139,0.05);
             color: rgba(0,0,0,0.8);
             border: none;
-            padding-top: 1%;
-            padding-bottom: 1%;
+            /* padding-top: 1%;
+            padding-bottom: 1%; */
+            height: 50px;
 }
 
 #textareaMainText {
