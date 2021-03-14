@@ -293,7 +293,7 @@ app.post('/api/addNewNote',function(req,res){
 
   let months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];   
    //reformat date & time
-   let formattedDate=req.body.day;
+   let formattedDate=req.body.date;
    formattedDate=formattedDate.split(' ');
 
     //give numeric value to month
