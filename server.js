@@ -49,17 +49,13 @@ let connection=mysql.createConnection(
     // password:'GiraskoErgazomeno5!',
     // socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock',
 
-    // host:'eyw6324oty5fsovx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-    // port:'3306',
-    // user:'il35nt2o2zwx9nng',
-    // database:'itlw9u5bloej7hoh',
-    // password:'c0anxpcjz3csgtwu'
-
-    host:'us-cdbr-east-03.cleardb.com',
+    host:'eyw6324oty5fsovx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
     port:'3306',
-    user:'b8f215c666ce71',
-    database:'heroku_1fea6d8c3ddf724',
-    password:'37453849'
+    user:'il35nt2o2zwx9nng',
+    database:'itlw9u5bloej7hoh',
+    password:'c0anxpcjz3csgtwu'
+
+    
   }
 );
 
