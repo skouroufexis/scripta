@@ -13,12 +13,12 @@
                 <div class="container">
         
                     <div class="row">
-                        <div class="col-6"></div>
-                        <div v-if="!edit" class="col darkcyan"><b>{{this.time}}</b></div>
-                        <button v-if="edit" class="col" >{{this.time}}</button>
+                        
+                        <div class="darkcyan"><b>{{this.time}}</b></div>
+                        
         
-                        <div v-if="!edit" class="col darkcyan"><b> {{this.date}}</b> </div>   
-                        <button v-if="edit" class="col" >{{this.date}}</button>
+                        <div class="left2 darkcyan"><b> {{this.date}}</b> </div>   
+                        
                     </div>
                     <div v-if="!edit" class="row darkcyan background_darkcyan top1"><b>{{this.title}}</b></div>
                     <input id="note_inputTitle" v-on:keyup='editTitle' v-if="edit" type="text" class="row top1" v-bind:value='this.title' >

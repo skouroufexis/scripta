@@ -16,11 +16,11 @@
     
                 <div style="height:auto; max-height: 300px; overflow-y: scroll;" class="top2">
                     <div class="row" v-for="note in notes" :key="note.note_id">
-                        <div class="col-8 record vertical-centre">
+                        <div class="col record vertical-centre">
                             <i class="fas fa-feather-alt"> {{note.title}} </i>   
                         </div>
         
-                        <button class="col-2 record " v-on:click='showNote(note.note_id,note.title,note.body,
+                        <button class="col-2 right1 record " v-on:click='showNote(note.note_id,note.title,note.body,
                                                                note.date,note.time,note.dossier_fk,note.user_fk)'>
                             open
                         </button>
