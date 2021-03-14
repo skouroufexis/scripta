@@ -43,9 +43,9 @@
                 </div>
 
                 <div v-if="!edit" class="row top2 note_actions_container">
-                    <div class="col-10"></div>
-                    <button class="col-1  note_actions" v-on:click='pdf'><i class="fas fa-file-pdf black"></i></button>                  
-                    <button class="col-1  note_actions" v-on:click='editOn'><i class="far fa-edit black"></i></button>
+                    
+                    <button class="note_actions" v-on:click='pdf'><i class="fas fa-file-pdf black"></i></button>                  
+                    <button class="left2 note_actions" v-on:click='editOn'><i class="far fa-edit black"></i></button>
                 </div>    
 
                 <div v-if="edit" class="row top1 note_actions_container">
