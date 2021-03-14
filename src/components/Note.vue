@@ -44,8 +44,8 @@
 
                 <div v-if="!edit" class="row top2 note_actions_container">
                     
-                    <button class="note_actions" v-on:click='pdf'><i class="fas fa-file-pdf black"></i></button>                  
-                    <button class="left2 note_actions" v-on:click='editOn'><i class="far fa-edit black"></i></button>
+                    <button class="right2 note_actions" v-on:click='pdf'><i class="fas fa-file-pdf black"></i></button>                  
+                    <button class="note_actions" v-on:click='editOn'><i class="far fa-edit black"></i></button>
                 </div>    
 
                 <div v-if="edit" class="row top1 note_actions_container">
@@ -521,15 +521,16 @@ export default {
         padding: 1%;
     }
  .note_actions i {font-size: 1.5em;}
+ 
  .note_actions_container {
-        position: absolute;
-        z-index: 1;
-        left: 0;
-        bottom: 0;
         
+        
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
         width: 100%;
         
-        }
+    }
     
 
 </style>
