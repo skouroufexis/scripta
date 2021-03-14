@@ -39,19 +39,21 @@
                         <div class="col-2" v-if='this.dossier==""'><img style="height:40px;width:auto;" class="col" src="../assets/loading.gif" alt="loading"> </div>
                         <button class="col-2" v-on:click='editTagsOn'><i class="fas fa-tag"> {{this.tags.length}}</i></button>
                     </div>
-        
-                    <div v-if="!edit" class="row top1">
-                        <button class="left-auto" v-on:click='pdf'><i class="fas fa-file-pdf"></i></button>                  
-                        <button class="left2 " v-on:click='editOn'><i class="far fa-edit"></i></button>
-                    </div>    
 
-                    <div v-if="edit" class="row top1">
-                        <button v-on:click='editOff' class="left-auto">Done</button>                              
-                    </div>    
-        
-                    
-                    
                 </div>
+
+                <div v-if="!edit" class="row top2 note_actions_container">
+                    <div class="col-10"></div>
+                    <button class="col-1  note_actions" v-on:click='pdf'><i class="fas fa-file-pdf black"></i></button>                  
+                    <button class="col-1  note_actions" v-on:click='editOn'><i class="far fa-edit black"></i></button>
+                </div>    
+
+                <div v-if="edit" class="row top1 note_actions_container">
+                        <div class="col-10"></div>
+                        <button v-on:click='editOff' class="col-1 left-auto black">Done</button>                              
+                </div>    
+
+
             </div>
         </transition>
 
@@ -222,7 +224,7 @@ export default {
             this.attachments=[];
             let self=this;         
             let request= new XMLHttpRequest();            
-            request.open('GET','https://scripta-app.herokuapp.com/api/note-attachments'); 
+            request.open('GET','http://localhost:8080/api/note-attachments'); 
     
             let session_id=localStorage.getItem('session_id');
             let note_fk=this.noteData[0].note_id;
@@ -261,7 +263,7 @@ export default {
              
             let self=this;
             let request= new XMLHttpRequest();            
-            request.open('GET','https://scripta-app.herokuapp.com/api/note-dossier');        
+            request.open('GET','http://localhost:8080/api/note-dossier');        
 
             let session_id=localStorage.getItem('session_id');
             let dossier_fk=this.noteData[0].dossier_fk;
@@ -290,7 +292,7 @@ export default {
             let self=this;
             
             let request= new XMLHttpRequest();            
-            request.open('GET','https://scripta-app.herokuapp.com/api/note-tags');        
+            request.open('GET','http://localhost:8080/api/note-tags');        
 
             let session_id=localStorage.getItem('session_id');
             let note_fk=this.noteData[0].note_id;
@@ -331,8 +333,8 @@ export default {
 
             let request=new XMLHttpRequest();
                             
-            request.open('PUT','https://scripta-app.herokuapp.com/api/note');
-            request.setRequestHeader('Content-Type','application/json');
+            request.open('PUT','http://localhost:8080/api/note');
+
             request.setRequestHeader('session_id', session_id);
 
             let data=JSON.stringify({note_id:note_id,title:title,body:body});
@@ -342,7 +344,7 @@ export default {
                                                                     
                 if(this.status==200){ //request is valid
                     
-                    alert(this.responseText);
+                    // alert(this.responseText);
                 
                 }
                 else{
@@ -409,9 +411,8 @@ export default {
             //send request to modify dossier                        
             let request=new XMLHttpRequest();
                 
-            request.open('PUT','https://scripta-app.herokuapp.com/api/assign-new-dossier');
-            request.setRequestHeader('Content-Type','application/json');
-    
+            request.open('PUT','http://localhost:8080/api/assign-new-dossier');
+
             request.setRequestHeader('session_id', session_id);            
             let data=JSON.stringify({dossier_name:dossier_name ,note_id:note_id,user_fk:user_id});
             request.send(data);                  
@@ -500,6 +501,11 @@ export default {
         height: 200px;
         overflow-y: scroll;
         padding: 1%;
+        /* background-color: rgb(0, 139, 139,0.05); */
+        /* border: solid rgba(0,0,0,0.1) thin; */
+        box-shadow: 0px 0px 3px rgba(0,0,0,0.6);
+        border-radius: 5px;
+
     }
     
    #note_textareaBody {
@@ -514,7 +520,16 @@ export default {
         /* overflow-y: scroll; */
         padding: 1%;
     }
-
+ .note_actions i {font-size: 1.5em;}
+ .note_actions_container {
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        bottom: 0;
+        
+        width: 100%;
+        
+        }
     
 
 </style>
