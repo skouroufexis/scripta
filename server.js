@@ -43,17 +43,23 @@ let connection=mysql.createConnection(
   {
     //check MAMP to see if these fields are provided for establishing connection
     // host:'localhost',
-    // port:'8080',
-    // user:'stavros',
-    // database:'diary',
-    // password:'uei',
+    // port:'3306',
+    // user:'u895648558_stavros',
+    // database:'u895648558_diary',
+    // password:'GiraskoErgazomeno5!',
     // socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock',
 
-    host:'eyw6324oty5fsovx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    // host:'eyw6324oty5fsovx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    // port:'3306',
+    // user:'il35nt2o2zwx9nng',
+    // database:'itlw9u5bloej7hoh',
+    // password:'c0anxpcjz3csgtwu'
+
+    host:'us-cdbr-east-03.cleardb.com',
     port:'3306',
-    user:'il35nt2o2zwx9nng',
-    database:'itlw9u5bloej7hoh',
-    password:'c0anxpcjz3csgtwu'
+    user:'b8f215c666ce71',
+    database:'heroku_1fea6d8c3ddf724',
+    password:'37453849'
   }
 );
 
