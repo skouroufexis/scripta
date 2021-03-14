@@ -44,13 +44,13 @@
 
                 <div v-if="!edit" class="row top2 note_actions_container">
                     
-                    <button class="right2 note_actions" v-on:click='pdf'><i class="fas fa-file-pdf black"></i></button>                  
-                    <button class="note_actions" v-on:click='editOn'><i class="far fa-edit black"></i></button>
+                    <button class="note_actions" v-on:click='pdf'><i class="fas fa-file-pdf black"></i></button>                  
+                    <button class="left2 note_actions" v-on:click='editOn'><i class="far fa-edit black"></i></button>
                 </div>    
 
                 <div v-if="edit" class="row top1 note_actions_container">
                         <div class="col-10"></div>
-                        <button v-on:click='editOff' class="col-1 left-auto black">Done</button>                              
+                        <button v-on:click='editOff' class="black">Done</button>                              
                 </div>    
 
 
@@ -527,7 +527,7 @@ export default {
         
         display: flex;
         flex-direction: row;
-        justify-content: flex-end;
+        justify-content: flex-start;
         width: 100%;
         
     }
