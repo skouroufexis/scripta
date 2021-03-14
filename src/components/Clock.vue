@@ -46,9 +46,13 @@
     background-color: white;
     /* border: solid rgb(0, 139, 139,0.4) thin; */
     box-shadow: 0px 0px 1px darkcyan;
-    
+
 }
 
+.time-picker-preview {
+  height:0px;
+  
+  }
 .preview-container {
 visibility: hidden;
 
