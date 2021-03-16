@@ -518,6 +518,7 @@ export default {
         
         request.setRequestHeader('session_id', session_id);
         request.setRequestHeader('user_id',user_id);
+        request.setRequestHeader('Content-Type','application/json');
         
         let data=JSON.stringify({title:title,body:body,day:day,time:time,attachments:attachments,dossier:dossier,tags:tags});
         console.log(data);
