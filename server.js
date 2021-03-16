@@ -49,10 +49,10 @@ let connection=mysql.createConnection(
     // password:'GiraskoErgazomeno5!',
     // socketPath: '/Applications/MAMP/tmp/mysql/mysql.sock',
 
-    host:'eyw6324oty5fsovx.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    host:'g84t6zfpijzwx08q.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
     port:'3306',
-    user:'il35nt2o2zwx9nng',
-    database:'itlw9u5bloej7hoh',
+    user:'lezlr2393up6dmai',
+    database:'mtpobahue21zm1s7',
     password:'c0anxpcjz3csgtwu'
 
     
