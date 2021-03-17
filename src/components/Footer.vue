@@ -525,7 +525,7 @@ export default {
         modal.style.opacity='1';
         modal.style.transform='translateY(0px)';
         }, 100);
-        alert(path);
+        
         this.displayRecent(n,path,container,inputValue);
         
          
@@ -552,32 +552,32 @@ export default {
 
         if(n==1){ //return dossiers
 
-                request.onload=function(){
-                        if(this.status==200){
-                                if(this.responseText=='' || this.responseText=='[]'){ //no results found
+           request.onload=function(){
+              if(this.status==200){
+                if(this.responseText=='' || this.responseText=='[]'){ //no results found
                                 
-                                //remove previously generated content
-                                while (container.hasChildNodes()) {
-                                container.removeChild(container.lastChild);
-                                }         
-                                let divHeader=document.createElement('div');
-                                divHeader.classList.add('row');
-                                divHeader.classList.add('systemMessage');
+                   //remove previously generated content
+                   while (container.hasChildNodes()) {
+                     container.removeChild(container.lastChild);
+                   }         
+                   let divHeader=document.createElement('div');
+                   divHeader.classList.add('row');
+                   divHeader.classList.add('systemMessage');
                                 
                                 let text=document.createTextNode('No recent dossiers found');
 
                                 divHeader.appendChild(text);
                                 container.appendChild(divHeader);
-                                }       
+                }       
                                     
-                                else{      
+                else{      
                                 
-                                //remove previously generated content         
-                                while (container.hasChildNodes()) {
-                                container.removeChild(container.lastChild);
+                   //remove previously generated content         
+                   while (container.hasChildNodes()) {
+                   container.removeChild(container.lastChild);
                                 }         
 
-                                let dossier=JSON.parse(this.responseText);
+                   let dossier=JSON.parse(this.responseText);
 
                                 let divHeader=document.createElement('div');
                                 divHeader.classList.add('row');
@@ -777,6 +777,7 @@ export default {
       toggleSetButton:function(n){
               let input;              
               let button;
+
               if(n==1){
                  input=document.getElementById('footer_inputDossierName');                                    
                  button=document.getElementById('buttonAddDossier');

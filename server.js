@@ -1239,58 +1239,56 @@ app.get('/api/get-user-dossiers',function(req,res){
 app.get('/api/get-user-tags',function(req,res){
   if(req.header('session_id')){
     let query;
-            let user_id=req.header('user_id');
-            let inputValue=req.header('input_value');
-                inputValue=decodeURI(inputValue);
+    let user_id=req.header('user_id');
+    let inputValue=req.header('input_value');
+        inputValue=decodeURI(inputValue);
             
-                //user queries a tag name
-                if(inputValue){
-                  inputValue=inputValue.trim();
-                  query='SELECT * FROM userTags WHERE userTags.user_fk=? AND userTags.tag_name LIKE ? ORDER BY userTags.userTag_id DESC LIMIT 3';
+    //user queries a tag name
+    if(inputValue){
+     inputValue=inputValue.trim();
+     query='SELECT * FROM userTags WHERE userTags.user_fk=? AND userTags.tag_name LIKE ? ORDER BY userTags.userTag_id DESC LIMIT 3';
                         
-                  inputValue='%'+inputValue+'%';
+      inputValue='%'+inputValue+'%';
                   
-                  connection.query(query,[user_id,inputValue],function(error,results){
-                    if(error){
-                      console.log('Query error: '+error);
-                      res.writeHead(500);
-                      res.end('Query error: '+error);
-                    }
-                    else{
+      connection.query(query,[user_id,inputValue],function(error,results){
+        if(error){
+          console.log('Query error: '+error);
+          res.writeHead(500);
+          res.end('Query error: '+error);
+        }
+        else{                             
+          let tags=[];
+          results.forEach((r)=>{
+            tags.push({userTag_id:r.userTag_id,tag_name:r.tag_name})
+          })
+          results=JSON.stringify(results);
+          
+          res.writeHead(200);
+          res.end(results);
+        }
+      });
+    }
+    else{
+       // inputValue=inputValue.trim();
+        query='SELECT tag_name FROM userTags WHERE userTags.user_fk=? ORDER BY userTags.userTag_id DESC LIMIT 3';
+                
+        connection.query(query,[user_id],function(error,results){
+          if(error){
+          console.log('Query error: '+error);
+          res.writeHead(500);
+          res.end('Query error: '+error);
+          }
+          else{
                       
+          let tags=[];
+          results.forEach((r)=>{
+          tags.push({tag_name:r.tag_name})
+          })
+          results=JSON.stringify(results);
                       
-                      let tags=[];
-                      results.forEach((r)=>{
-                        tags.push({userTag_id:r.userTag_id,tag_name:r.tag_name})
-                      })
-                      results=JSON.stringify(results);
-                      
-                      res.writeHead(200);
-                      res.end(results);
-                    }
-                  });
-                }
-                else{
-                  // inputValue=inputValue.trim();
-                  query='SELECT tag_name FROM userTags WHERE userTags.user_fk=? ORDER BY userTags.userTag_id DESC LIMIT 3';
-                  res.writeHead(200);
-                  connection.query(query,[user_id],function(error,results){
-                    if(error){
-                      console.log('Query error: '+error);
-                      res.writeHead(500);
-                      res.end('Query error: '+error);
-                    }
-                    else{
-                      
-                      let tags=[];
-                      results.forEach((r)=>{
-                        tags.push({tag_name:r.tag_name})
-                      })
-                      results=JSON.stringify(results);
-                      
-                      res.writeHead(200);
-                      res.end(results);
-                    }
+          res.writeHead(200);
+          res.end(results);
+          }
                   })
                 }
   }
