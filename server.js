@@ -1009,7 +1009,32 @@ app.delete('/api/note-tag',function(req,res){
     res.writeHead(400);          
     res.end('unauthorized');
   }
+});
+
+app.delete('/api/note',function(req,res){
+  if(req.header('session_id')){    
+      let note_id=req.body.note_id;
+      let query='DELETE FROM notes WHERE note_id=?';
+      connection.query(query,[note_id],function(error,results){
+        if(error){
+          console.log('Query error: '+error);
+          res.writeHead(500);                
+          res.end('Query error: '+error);
+        }
+        else{          
+          res.writeHead(200);
+          res.end('Note successfully deleted');    
+        }
+      })
+    
+  }
+  else{
+    console.log('authentication failed');
+    res.writeHead(400);          
+    res.end('unauthorized');
+}
 })
+
 app.delete('/api/dossier',function(req,res){
   if(req.header('session_id')){
     let dossier_fk=req.body.dossier_fk;
