@@ -148,7 +148,7 @@ export default {
 
             request.setRequestHeader('session_id', session_id);
             request.setRequestHeader('Content-Type','application/json');
-            
+
             let data=JSON.stringify({attachment_id:attachment_id,note_fk:note_fk});
 
             request.send(data);                  

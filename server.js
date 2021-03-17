@@ -770,11 +770,48 @@ app.put('/api/assign-new-dossier',function(req,res){
                 res.end('Query error: '+error);
               }
               else{
-                res.writeHead(200);
-                
+                res.writeHead(200);                
                 res.end(JSON.stringify({dossier_fk:dossier_fk,dossier_name:dossier_name}));
               }
             })
+          }
+          else{ //new dossier name
+            query='INSERT INTO userDossier (user_fk,dossier_name) VALUES (?,?)';
+            connection.query(query,[user_fk,dossier_name],function(error,results){
+              if(error){
+                console.log('Query error: '+error);
+                res.writeHead(500);
+                res.end('Query error: '+error);
+              }
+              else{
+                query='SELECT * FROM userDossier WHERE user_fk=? ORDER BY userDossier_id DESC LIMIT 1';
+                connection.query(query,[user_fk],function(error,results){
+                  if(error){
+                    console.log('Query error: '+error);
+                    res.writeHead(500);
+                    res.end('Query error: '+error);
+                  }
+                  else{
+                    let dossier_fk=results[0].userDossier_id;
+                    let dossier_name=results[0].dossier_name;
+                    query='UPDATE notes SET dossier_fk=? WHERE note_id=?';                    
+                    connection.query(query,[results[0].userDossier_id,note_id],function(error,results){
+                      if(error){
+                        console.log('Query error: '+error);
+                        res.writeHead(500);
+                        res.end('Query error: '+error);
+                      }
+                      else{
+                        
+                        res.writeHead(200);                
+                        res.end(JSON.stringify({dossier_fk:dossier_fk,dossier_name:dossier_name}));
+                      }
+                    })
+                  }
+                })  
+              }
+            })
+
           }
         }
     })
