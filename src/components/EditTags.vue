@@ -67,9 +67,7 @@ export default {
 
     watch:{
          tagNames:function(newVal){
-               this.tagNames=newVal;  
-               
-               
+               this.tagNames=newVal;                 
          }, 
            tags:function(newVal){
                  this.tags=newVal;    
@@ -95,6 +93,7 @@ export default {
     methods:{
         
         getTagNames:function(){
+            
             let self=this;
             
             let tags=this.tags;     

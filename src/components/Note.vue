@@ -207,13 +207,13 @@ export default {
          logo:function(newVal){
                this.logo=newVal;  
          }, 
-        //  dossier:function(newVal){
-        //        this.dossier=newVal;   
+         dossier:function(newVal){
+               this.dossier=newVal;   
                
-        //  },
-        //  tags:function(newVal){
-        //          this.new_tags=newVal;                 
-        //  },
+         },
+         tags:function(newVal){
+                 this.new_tags=newVal;                 
+         },
         
     },
 
@@ -306,7 +306,7 @@ export default {
             request.onload=function(){
                 if(this.status==200){
                     let response=JSON.parse(this.responseText);  
-                    self.tags=[];
+                    
                     response.forEach(r=>{
                         self.tags.push({notesTags_id:r.notesTags_id,note_fk:r.note_fk,tag_fk:r.tag_fk});
                     })                  

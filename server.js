@@ -996,8 +996,7 @@ app.delete('/api/note-tag',function(req,res){
         res.writeHead(500);                
         res.end('Query error: '+error);
       }
-      else{
-      
+      else{      
         res.writeHead(200);
         res.end('Tag successfully deleted');    
       }
