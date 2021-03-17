@@ -734,14 +734,7 @@ export default {
 
                                         //clear the input field
                                         input.value='';
-
-
-                                //        //highlight clicked tag 
-                                //        let spans=document.getElementsByClassName('footer_tagLabel');
-                                //         spans.forEach(s=>{
-                                //                 s.style.color='rgba(0,0,0,0.7)'
-                                //         })
-                                //         span.style.color='darkcyan';                                        
+                                      
                                       });                                                               
                                     })                        
                                 }
