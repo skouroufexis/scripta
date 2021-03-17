@@ -138,6 +138,7 @@ export default {
                 let request= new XMLHttpRequest();    
                 request.open('POST','https://scripta-app.herokuapp.com/api/addNewUser');
                 request.setRequestHeader('Content-Type','application/json');
+                
                 let data=JSON.stringify({user_name:this.username,user_email:this.email,user_password:this.password});
                 request.send(data);  
                 

@@ -160,6 +160,7 @@ export default {
               let request=new XMLHttpRequest();                
               request.open('DELETE','https://scripta-app.herokuapp.com/api/dossier');
               request.setRequestHeader('session_id', session_id);
+              request.setRequestHeader('Content-Type','application/json');
               let data=JSON.stringify({dossier_fk:dossier_id});
               request.send(data);                  
 

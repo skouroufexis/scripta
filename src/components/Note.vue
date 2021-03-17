@@ -337,6 +337,8 @@ export default {
             request.open('PUT','https://scripta-app.herokuapp.com/api/note');
 
             request.setRequestHeader('session_id', session_id);
+            request.setRequestHeader('Content-Type','application/json');
+
 
             let data=JSON.stringify({note_id:note_id,title:title,body:body});
             request.send(data);                  
@@ -414,7 +416,9 @@ export default {
                 
             request.open('PUT','https://scripta-app.herokuapp.com/api/assign-new-dossier');
 
-            request.setRequestHeader('session_id', session_id);            
+            request.setRequestHeader('session_id', session_id);   
+            request.setRequestHeader('Content-Type','application/json');
+                     
             let data=JSON.stringify({dossier_name:dossier_name ,note_id:note_id,user_fk:user_id});
             request.send(data);                  
 

@@ -134,6 +134,7 @@ export default {
                 request.open('DELETE','https://scripta-app.herokuapp.com/api/note');
 
                 request.setRequestHeader('session_id', session_id);
+                request.setRequestHeader('Content-Type','application/json');
 
                 let data=JSON.stringify({note_id:note_id});
                 request.send(data);                  

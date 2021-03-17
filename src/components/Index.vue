@@ -168,7 +168,8 @@ export default {
 
             let session_id=localStorage.getItem('session_id');            
             let data=JSON.stringify({note_id:note.note_id});            
-            request.setRequestHeader('session_id', session_id);                                           
+            request.setRequestHeader('session_id', session_id);    
+            request.setRequestHeader('Content-Type','application/json');                                       
             //send request
             request.send(data);  
 

@@ -147,6 +147,8 @@ export default {
             request.open('DELETE','https://scripta-app.herokuapp.com/api/attachment');
 
             request.setRequestHeader('session_id', session_id);
+            request.setRequestHeader('Content-Type','application/json');
+            
             let data=JSON.stringify({attachment_id:attachment_id,note_fk:note_fk});
 
             request.send(data);                  
@@ -257,7 +259,10 @@ export default {
                             
             request.open('POST','https://scripta-app.herokuapp.com/api/attachment');
 
+
             request.setRequestHeader('session_id', session_id);
+            request.setRequestHeader('Content-Type','application/json');
+
             console.log(this.newNoteAttachments);
             this.newNoteAttachments.forEach(a=>{
                 data.push({attachment_name:a.attachment_data,note_fk:note_fk});

@@ -141,6 +141,7 @@ export default {
             request.open('DELETE','https://scripta-app.herokuapp.com/api/note-tag');
 
             request.setRequestHeader('session_id', session_id);
+            request.setRequestHeader('Content-Type','application/json');
 
             let data=JSON.stringify({note_fk:note_fk,tag_fk:tag_fk});
             request.send(data);                  
@@ -245,6 +246,7 @@ export default {
             request.open('POST','https://scripta-app.herokuapp.com/api/notesTags');
 
             request.setRequestHeader('session_id', session_id);
+            request.setRequestHeader('Content-Type','application/json');
 
             let data=JSON.stringify({tag_name:tagName,
                                      user_fk:user_fk,
