@@ -1244,7 +1244,7 @@ app.get('/api/get-user-tags',function(req,res){
         inputValue=decodeURI(inputValue);
     
         //user queries a tag name
-        if(inputValue){
+        if(inputValue!=''){
           inputValue=inputValue.trim();
           query='SELECT * FROM userTags WHERE userTags.user_fk=? AND userTags.tag_name LIKE ? ORDER BY userTags.userTag_id DESC LIMIT 3';
                 
@@ -1269,7 +1269,7 @@ app.get('/api/get-user-tags',function(req,res){
           });
         }
         else{
-          inputValue=inputValue.trim();
+          // inputValue=inputValue.trim();
           query='SELECT tag_name FROM userTags WHERE userTags.user_fk=? ORDER BY userTags.userTag_id DESC LIMIT 3';
           res.writeHead(200);
           connection.query(query,[user_id],function(error,results){

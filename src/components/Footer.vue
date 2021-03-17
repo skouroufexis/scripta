@@ -481,54 +481,43 @@ export default {
 
         if(n==1)
         {
-                modal= document.getElementById('footer_dossierModal');
-                // input=document.getElementById('footer_inputDossierName');    
+           modal= document.getElementById('footer_dossierModal');
+           // input=document.getElementById('footer_inputDossierName');    
 
-                //path for requesting user dossiers
-                path='https://scripta-app.herokuapp.com/api/get-user-dossiers';
-                container=document.getElementById('footer_dossierResultsContainer');
+           //path for requesting user dossiers
+           path='https://scripta-app.herokuapp.com/api/get-user-dossiers';
+           container=document.getElementById('footer_dossierResultsContainer');
                 
-                if(this.dossier==''){
-                        document.getElementById('footer_addedDossier').innerHTML='';
-                }
+           if(this.dossier==''){
+              document.getElementById('footer_addedDossier').innerHTML='';
+            }
                 
         }    
         else if(n==2)
         {
-                modal= document.getElementById('footer_tagsModal');
-                // input=document.getElementById('footer_inputTagName');
+           modal= document.getElementById('footer_tagsModal');
+           // input=document.getElementById('footer_inputTagName');
         
-                //path for requesting user tags
-                path='https://scripta-app.herokuapp.com/api/get-user-tags';
-                container=document.getElementById('footer_tagsResultsContainer');
+           //path for requesting user tags
+           path='https://scripta-app.herokuapp.com/api/get-user-tags';
+           container=document.getElementById('footer_tagsResultsContainer');
 
                 
-                if(this.tags==''){
-                   this.temptags=[];     
-                   document.getElementById('footer_addedTags').innerHTML='';     
-                }
-                else{
-                   this.temptags=this.tags;   
+           if(this.tags==''){
+              this.temptags=[];     
+              document.getElementById('footer_addedTags').innerHTML='';     
+            }
+            else{
+              this.temptags=this.tags;   
+              let string='';
+              this.temptags.forEach(t=>{
+                string=string+ ` &nbsp; &nbsp;`+ `<i class="fas fa-tag">  ${t}</i>`;
 
-                    let string='';
-                   this.temptags.forEach(t=>{
-                        string=string+ ` &nbsp; &nbsp;`+ `<i class="fas fa-tag">  ${t}</i>`;
+                })
+              document.getElementById('footer_addedTags').innerHTML=string;
 
-                   })
-                   document.getElementById('footer_addedTags').innerHTML=string;
+            }
 
-                }
-
-                
-                // else{
-                   
-                  
-                   
-                   
-                // }
-                
-                
-                
         }        
         modal.style.display='flex';
         
@@ -537,10 +526,8 @@ export default {
         modal.style.transform='translateY(0px)';
         }, 100);
         alert(path);
-        // this.displayRecent(n,path,container,inputValue);
-        console.log(container);
-        console.log(inputValue);
-        console.log(n);
+        this.displayRecent(n,path,container,inputValue);
+        
          
       },
 
@@ -553,9 +540,9 @@ export default {
             inputValue=encodeURI(inputValue);        
 
         let request= new XMLHttpRequest();            
-        request.open('GET',path);        
-        //set session_id header        
-        
+        request.open('GET',path);      
+
+        //set session_id header                
         request.setRequestHeader('session_id', session_id); 
         request.setRequestHeader('user_id', user_id);
         request.setRequestHeader('input_value',inputValue);                   
@@ -782,7 +769,7 @@ export default {
         
         inputValue=input.value;
         
-
+        alert(inputValue);
         this.displayRecent(n,path,container,inputValue);              
       },
 
