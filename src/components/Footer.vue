@@ -746,7 +746,7 @@ export default {
          let path;
          let container;
          let input;
-         let inputValue;
+         let inputValue='';
          
         if(n==1)
         {          
@@ -755,6 +755,7 @@ export default {
           //path for requesting user dossiers
            path='https://scripta-app.herokuapp.com/api/get-user-dossiers';
            container=document.getElementById('footer_dossierResultsContainer');                                
+           inputValue=input.value;
         }    
         else
         {
@@ -764,12 +765,11 @@ export default {
             //path for requesting user tags
             path='https://scripta-app.herokuapp.com/api/get-user-tags';
             container=document.getElementById('footer_tagsResultsContainer');
+            inputValue=input.value;
             
         }     
         
-        inputValue=input.value;
         
-        alert(inputValue);
         this.displayRecent(n,path,container,inputValue);              
       },
 
