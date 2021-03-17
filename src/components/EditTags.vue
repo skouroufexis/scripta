@@ -33,7 +33,7 @@
             </div> -->
         </div>
         <div class="container top1" id="newTagsContainer" style="height:80px;overflow-y: scroll;">
-                <div class="row  background_darkcyan" v-for="userTag in this.userTags" :key="userTag.tag_name">
+                <div class="row  top1 background_darkcyan" v-for="userTag in this.userTags" :key="userTag.tag_name">
                     <button v-on:click='updateInput(userTag.userTag_id,userTag.tag_name)' class="left col-12"><i class="fas fa-tag  darkcyan"> <span class="black"> {{userTag.tag_name}} </span></i></button>
                 </div>   
         </div>

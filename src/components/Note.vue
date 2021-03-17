@@ -207,13 +207,13 @@ export default {
          logo:function(newVal){
                this.logo=newVal;  
          }, 
-         dossier:function(newVal){
-               this.dossier=newVal;   
+        //  dossier:function(newVal){
+        //        this.dossier=newVal;   
                
-         },
-         tags:function(newVal){
-                 this.new_tags=newVal;                 
-         },
+        //  },
+        //  tags:function(newVal){
+        //          this.new_tags=newVal;                 
+        //  },
         
     },
 
@@ -418,7 +418,7 @@ export default {
 
             request.setRequestHeader('session_id', session_id);   
             request.setRequestHeader('Content-Type','application/json');
-                     
+
             let data=JSON.stringify({dossier_name:dossier_name ,note_id:note_id,user_fk:user_id});
             request.send(data);                  
 
