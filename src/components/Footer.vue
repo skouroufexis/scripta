@@ -535,9 +535,12 @@ export default {
         setTimeout(() => {
         modal.style.opacity='1';
         modal.style.transform='translateY(0px)';
-        }, 1000);
-
-        this.displayRecent(n,path,container,inputValue);
+        }, 100);
+        alert(path);
+        // this.displayRecent(n,path,container,inputValue);
+        console.log(container);
+        console.log(inputValue);
+        console.log(n);
          
       },
 
