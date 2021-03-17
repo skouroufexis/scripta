@@ -535,7 +535,7 @@ export default {
         setTimeout(() => {
         modal.style.opacity='1';
         modal.style.transform='translateY(0px)';
-        }, 100);
+        }, 1000);
 
         this.displayRecent(n,path,container,inputValue);
          

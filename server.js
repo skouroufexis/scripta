@@ -1257,16 +1257,14 @@ app.get('/api/get-user-tags',function(req,res){
               res.end('Query error: '+error);
             }
             else{
-              if(results!='')
-              
-              {let tags=[];
+              let tags=[];
               results.forEach((r)=>{
                 tags.push({userTag_id:r.userTag_id,tag_name:r.tag_name})
               })
               results=JSON.stringify(results);
               
               res.writeHead(200);
-              res.end(results);}
+              res.end(results);
             }
           });
         }
