@@ -5,7 +5,10 @@
 
             <div class="row" v-if='menuNumber==2'>
                 <!-- <button><i class="fab fa-whmcs"></i></button> -->
-                <button id="footer_button_openActions" v-on:click='openActions'><i class="fas fa-plus-circle"></i></button>
+                <button id="footer_button_openActions" v-on:click='openActions'>
+                        <i class="fas fa-plus-circle"> <span class="systemMessage" style="font-size:0.6em"> Add attachments, dossiers, tags</span> </i> 
+                        
+                </button>
             </div>
 
             <div class="row" v-if='menuNumber!=2'>                
@@ -50,7 +53,7 @@
                 <input type="file"  id="attachment" style="display:none;" v-on:change='attachFile' accept=".png,.jpeg,.jpg,.pdf">
                 
             </div>
-
+              
             <div class="row" id="footerMenuContainer">
 
                    <button class="footer_button_main" v-on:click='navigate(1,"Scripta")' > 
