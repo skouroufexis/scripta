@@ -13,9 +13,7 @@
         </div>
 
         <div  v-if="!this.typing"  class="container sideDataContainer" style="position:relative;height:200px; overflow-y:scroll;">                
-            
-            
-                
+
                     <div  class="row top1 record justify_centre" v-for="tagName in this.tagNames" :key="tagName.userTag_id">                                          
                         <button   class="col left vertical_centre" >    
                             <i class="fas fa-tag"> {{tagName.tag_name}} </i>                    
@@ -209,6 +207,7 @@ export default {
 
         addTag:function(){      
             
+             this.typing=false;
             let self=this;
 
             let note_fk=this.noteData[0].note_id;                
@@ -235,17 +234,19 @@ export default {
            })
 
            if(included==true){
-               alert('tag already included');
+               alert('tag already included');               
+               document.getElementById('button_add').disabled=true;
+               document.getElementById('input_tag').value='';
+               this.userTags=[];
            }
            else{  
             
                 
             let request=new XMLHttpRequest();
                             
-            request.open('POST','https://scripta-app.herokuapp.com/api/notesTags');
+            request.open('POST','http://localhost:8080/api/notesTags');
 
             request.setRequestHeader('session_id', session_id);
-            request.setRequestHeader('Content-Type','application/json');
 
             let data=JSON.stringify({tag_name:tagName,
                                      user_fk:user_fk,
@@ -256,7 +257,7 @@ export default {
             request.onload = function (){        
                                                     
                     if(this.status==200){ //request is valid
-                        alert(this.responseText);
+                        
                         self.tagNames=[];                        
                         self.$emit('getTags');
                         document.getElementById('button_add').disabled=true;

@@ -971,11 +971,12 @@ export default {
 
 .footer_button_main {
         margin-left: 2%;
-        height: 70px;
-        width: 70px;
+        height: 100%;        
         background-color: white;
             
 }
+
+
    
 .footer_button_main img {
         height:  40px;
@@ -997,7 +998,8 @@ export default {
 #footer_button_whiteSpace {visibility: hidden;}
 
 #footer_button_openActions,#footer_button_whiteSpace {
-        height: 40px;width: 40px;
+        height: 40px;
+        width: auto;
         border: none;
         margin-bottom: 1%;
         background-color: rgba(0,0,0,0);
