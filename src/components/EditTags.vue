@@ -169,7 +169,7 @@ export default {
                 this.userTags=[];
                 inputValue=encodeURI(inputValue);
                 let request= new XMLHttpRequest();            
-                request.open('GET','http://localhost:8080/api/get-user-tags');        
+                request.open('GET','https://scripta-app.herokuapp.com/get-user-tags');        
 
                 let session_id=localStorage.getItem('session_id');
                 let user_id=localStorage.getItem('user_id');
@@ -244,7 +244,7 @@ export default {
                 
             let request=new XMLHttpRequest();
                             
-            request.open('POST','http://localhost:8080/api/notesTags');
+            request.open('POST','https://scripta-app.herokuapp.com/api/notesTags');
 
             request.setRequestHeader('session_id', session_id);
 
