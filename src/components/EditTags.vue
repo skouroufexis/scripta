@@ -146,7 +146,7 @@ export default {
             request.onload = function (){        
                 if(this.status==200){ //request is valid
 
-                    alert(this.responseText);
+                    
                     self.tagNames=[];
                     self.$emit('getTags');
 
@@ -169,7 +169,7 @@ export default {
                 this.userTags=[];
                 inputValue=encodeURI(inputValue);
                 let request= new XMLHttpRequest();            
-                request.open('GET','https://scripta-app.herokuapp.com/get-user-tags');        
+                request.open('GET','https://scripta-app.herokuapp.com/api/get-user-tags');        
 
                 let session_id=localStorage.getItem('session_id');
                 let user_id=localStorage.getItem('user_id');
