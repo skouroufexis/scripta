@@ -247,6 +247,7 @@ export default {
             request.open('POST','https://scripta-app.herokuapp.com/api/notesTags');
 
             request.setRequestHeader('session_id', session_id);
+            request.setRequestHeader('Content-Type','application/json');
 
             let data=JSON.stringify({tag_name:tagName,
                                      user_fk:user_fk,
