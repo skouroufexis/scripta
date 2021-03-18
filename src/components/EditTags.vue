@@ -33,7 +33,7 @@
             </div> -->
         </div>
         
-        <div v-if="this.userTags!=''" class="top1 container systemMessage">Scroll down to see saved tags</div>
+        <div v-if="this.userTags!=''" class="top1 container systemMessage">Click to select an existing tag</div>
         <div class="container top1" id="newTagsContainer" style="height:90px; overflow-y:scroll;">
                 
                 <div class="row  background_darkcyan" v-for="userTag in this.userTags" :key="userTag.tag_name">

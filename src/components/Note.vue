@@ -503,7 +503,7 @@ export default {
         position: relative;
         text-align: justify;
         white-space: pre-wrap;
-        height: 200px;
+        height: 180px;
         overflow-y: scroll;
         padding: 1%;
         /* background-color: rgb(0, 139, 139,0.05); */

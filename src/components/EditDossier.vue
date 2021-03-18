@@ -5,7 +5,7 @@
 
         <div class="row">
             <button v-on:click='$emit("back_noteDossier",currentDossier)'>
-                <i class="fas fa-caret-left back"></i>
+                <i class="fas fa-caret-left back"></i> 
             </button>
         </div>
 
@@ -14,7 +14,7 @@
         <div class="container">
             <h5 class="row darkcyan">Edit or remove dossier</h5>
         </div>
-        <div v-if="this.userDossiers!=''" class="top1 container systemMessage">Scroll down to see saved dossiers</div>
+        <div v-if="this.userDossiers!=''" class="top1 container systemMessage">Click to select an existing dossier</div>
         <div class="container" style="height:90px;overflow-y:scroll">               
 
                 <div v-if="this.userDossiers!=''">
