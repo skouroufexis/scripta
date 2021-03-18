@@ -12,7 +12,7 @@
             <h5 class="row darkcyan">Add or remove tags</h5>
         </div>
 
-        <div class="container sideDataContainer" style="height:180px;overflow-y: scroll;">                
+        <div class="container sideDataContainer" >                
             
             <div class="row top1 record justify_centre" v-for="tagName in this.tagNames" :key="tagName.userTag_id">                                          
                 <button class="col left vertical_centre" >    
@@ -32,20 +32,22 @@
                 <div class="row" ><img style="height:40px;width:auto;" class="col" src="../assets/loading.gif" alt="loading"> </div>             
             </div> -->
         </div>
-        <div class="container top1" id="newTagsContainer" style="height:80px;overflow-y: scroll;">
-                <div class="row  top1 background_darkcyan" v-for="userTag in this.userTags" :key="userTag.tag_name">
+        
+        <div v-if="this.userTags!=''" class="top1 container systemMessage">Scroll down to see saved tags</div>
+        <div class="container top1" id="newTagsContainer" style="height:90px; overflow-y:scroll;">
+                
+                <div class="row  background_darkcyan" v-for="userTag in this.userTags" :key="userTag.tag_name">
                     <button v-on:click='updateInput(userTag.userTag_id,userTag.tag_name)' class="left col-12"><i class="fas fa-tag  darkcyan"> <span class="black"> {{userTag.tag_name}} </span></i></button>
                 </div>   
         </div>
         <div class="container">
-                <div class="row">                                    
+                <div class="row">    
+
                     <input class="col-12 top1" id="input_tag" type="text" placeholder="New tag" v-on:keyup='getUserTags'>    
                     
-                    <button class="col-12 top1 left" id="button_add" v-on:click='addTag' disabled>Update</button>
+                    <button class="col-12 top1 left" id="button_add" v-on:click='addTag' disabled>Add tag</button>
                 </div>  
         </div>  
-
-
     </div>    
 </template>
 

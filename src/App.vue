@@ -230,6 +230,8 @@ export default {
 </script>
 
 <style>
+
+
 body {
       
       height: 100vh;
@@ -237,6 +239,7 @@ body {
       background-size: contain;
       background-position: center;
       /* background-origin: content-box; */
+      overflow-y: hidden;
       
       
 }
@@ -246,6 +249,7 @@ body {
       margin-top: auto;
       margin-bottom: auto;
       height: 100%;
+      
       
 }
 
@@ -281,18 +285,16 @@ body {
 main { 
       
       position: relative;
-      height: 68vh;
+      height: 65vh;
       margin-top: 2vh;      
-      overflow-y: scroll;   
+      overflow-y: hidden;   
       border: solid whitesmoke thin;
 
 }
 
 #Footer  {
           height: 20vh;
-          
-          
-          
+
 } 
 
 .header {
@@ -320,6 +322,7 @@ form {
          font-weight: bold;
          border: none;
          height: 40px;
+         
          color: darkcyan;   
 }
 
@@ -343,6 +346,7 @@ a{cursor: pointer;}
         color: white;  
         background-color: rgb(0, 139, 139,1);              
         height: 40px;
+        
         margin-left: auto;
         margin-right: auto;
         /* border-radius: 50px;     */
@@ -468,7 +472,7 @@ a{cursor: pointer;}
 
 }  
 
-.sideDataContainer {height:auto; max-height: 300px; overflow-y: scroll;}
+.sideDataContainer {height:100%; }
 
 .img_fullScreen {max-height: 300px;}
 

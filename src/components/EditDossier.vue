@@ -14,8 +14,8 @@
         <div class="container">
             <h5 class="row darkcyan">Edit or remove dossier</h5>
         </div>
-        
-        <div class="container" style="height:200px">               
+        <div v-if="this.userDossiers!=''" class="top1 container systemMessage">Scroll down to see saved dossiers</div>
+        <div class="container" style="height:90px;overflow-y:scroll">               
 
                 <div v-if="this.userDossiers!=''">
                     <div class="sideDataContainer row record" v-for="(userDossier,index) in userDossiers" :key="index" >                                            
