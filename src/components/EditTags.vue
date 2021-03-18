@@ -161,18 +161,17 @@ export default {
 
         },
         getUserTags:function(){   
-            this.tagId='';
-            
-            
+           this.tagId='';
+
             let inputValue=document.getElementById('input_tag').value.trim();
             if(inputValue!=''){
-                
+                this.typing=true;
                 document.getElementById('button_add').disabled=false;    
                 let self=this;
                 this.userTags=[];
                 inputValue=encodeURI(inputValue);
                 let request= new XMLHttpRequest();            
-                request.open('GET','https://scripta-app.herokuapp.com/api/get-user-tags');        
+                request.open('GET','http://localhost:8080/api/get-user-tags');        
 
                 let session_id=localStorage.getItem('session_id');
                 let user_id=localStorage.getItem('user_id');
@@ -201,6 +200,7 @@ export default {
                 }  
             }
             else{
+                this.typing=false;
                 this.userTags=[];
                 document.getElementById('button_add').disabled=true;
             }
