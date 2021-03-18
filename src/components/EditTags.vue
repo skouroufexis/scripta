@@ -48,6 +48,8 @@
                     <button class="col-12 top1 left" id="button_add" v-on:click='addTag' disabled>Add tag</button>
                 </div>  
         </div>  
+
+
     </div>    
 </template>
 
