@@ -4,7 +4,7 @@
 
         <div class="row">
             <button v-on:click='$emit("back_noteTags")'>
-                <i class="fas fa-caret-left back"></i>
+                <i class="fas fa-caret-left back"></i> 
             </button>
         </div>
 
@@ -12,37 +12,31 @@
             <h5 class="row darkcyan">Add or remove tags</h5>
         </div>
 
-        <div class="container sideDataContainer" >                
+        <div  v-if="!this.typing"  class="container sideDataContainer" style="position:relative;height:200px; overflow-y:scroll;">                
             
-            <div class="row top1 record justify_centre" v-for="tagName in this.tagNames" :key="tagName.userTag_id">                                          
-                <button class="col left vertical_centre" >    
-                    <i class="fas fa-tag"> {{tagName.tag_name}} </i>                    
-                </button>      
-                <button class="col left vertical_centre"  v-on:click='deleteTag(tagName.userTag_id)'>                
-                    <i class="far fa-trash-alt"></i>    
-                </button>  
+            
+                
+                    <div  class="row top1 record justify_centre" v-for="tagName in this.tagNames" :key="tagName.userTag_id">                                          
+                        <button   class="col left vertical_centre" >    
+                            <i class="fas fa-tag"> {{tagName.tag_name}} </i>                    
+                        </button>      
+                        <button class="col left vertical_centre"  v-on:click='deleteTag(tagName.userTag_id)'>                
+                            <i class="far fa-trash-alt"></i>    
+                        </button>                               
+                    </div>  
 
-                <!-- <div class="row" v-if="this.noteAttachments=='' &&!this.noAttachments">
-                <div class="row" ><img style="height:40px;width:auto;" class="col" src="../assets/loading.gif" alt="loading"> </div>             
-                </div> -->
-                                                
-            </div>   
-                             
-            <!-- <div class="row" v-if="this.noteAttachments==''">
-                <div class="row" ><img style="height:40px;width:auto;" class="col" src="../assets/loading.gif" alt="loading"> </div>             
-            </div> -->
         </div>
         
-        <div v-if="this.userTags!=''" class="top1 container systemMessage">Click to select an existing tag</div>
-        <div class="container top1" id="newTagsContainer" style="height:90px; overflow-y:scroll;">
-                
-                <div class="row  background_darkcyan" v-for="userTag in this.userTags" :key="userTag.tag_name">
-                    <button v-on:click='updateInput(userTag.userTag_id,userTag.tag_name)' class="left col-12"><i class="fas fa-tag  darkcyan"> <span class="black"> {{userTag.tag_name}} </span></i></button>
-                </div>   
-        </div>
+       
         <div class="container">
                 <div class="row">    
-
+                    <div v-if="this.userTags!=''" class="top1 container systemMessage">Click to select an existing tag</div>
+                    <div class="container top1" id="newTagsContainer" style="max-height:300px; overflow-y:scroll;">
+                        
+                        <div class="row top1  background_darkcyan" v-for="userTag in this.userTags" :key="userTag.tag_name">
+                            <button v-on:click='updateInput(userTag.userTag_id,userTag.tag_name)' class="left col-12"><i class="fas fa-tag  darkcyan"> <span class="black"> {{userTag.tag_name}} </span></i></button>
+                        </div>   
+                    </div>
                     <input class="col-12 top1" id="input_tag" type="text" placeholder="New tag" v-on:keyup='getUserTags'>    
                     
                     <button class="col-12 top1 left" id="button_add" v-on:click='addTag' disabled>Add tag</button>
@@ -62,7 +56,8 @@ export default {
         return{
         tagNames:[],
         userTags:[],
-        tagId:''
+        tagId:'',
+        typing:false
         }
     },
 

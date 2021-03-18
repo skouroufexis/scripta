@@ -18,7 +18,7 @@
         <div class="container" style="height:90px;overflow-y:scroll">               
 
                 <div v-if="this.userDossiers!=''">
-                    <div class="sideDataContainer row record" v-for="(userDossier,index) in userDossiers" :key="index" >                                            
+                    <div class="sideDataContainer row top1 record" v-for="(userDossier,index) in userDossiers" :key="index" >                                            
                         <button v-on:click='updateInput(userDossier.dossier_name)' class="col-12  left"><i  class="fas fa-folder darkcyan"> <span class="black"> <p>{{userDossier.dossier_name}}</p></span>  </i></button>                                                                 
                     </div>    
                 </div>     
