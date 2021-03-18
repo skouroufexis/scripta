@@ -1614,6 +1614,7 @@ app.get('/api/query-note',function(req,res){
   if(req.header('session_id')){
     let user_id=req.header('user_id');
     let query_input=req.header('query_input');
+        query_input=decodeURI(query_input);
         query_input='%'+query_input+'%';
     let query='SELECT * FROM notes WHERE user_fk=? AND title LIKE ? ORDER BY TITLE';
     connection.query(query,[user_id,query_input],function(error,results){

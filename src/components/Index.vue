@@ -119,6 +119,7 @@ export default {
             this.recentNotes=[];
             let self= this;
             let query_input=document.getElementById('searchbar').value.trim();
+                query_input=encodeURI(query_input);
             
             if(query_input!=''){
 
