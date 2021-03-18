@@ -49,7 +49,7 @@
                 </div>    
 
                 <div v-if="edit" class="row top1 note_actions_container">
-                        <div class="col-10"></div>
+                        
                         <button v-on:click='editOff' class="black">Done</button>                              
                 </div>    
 

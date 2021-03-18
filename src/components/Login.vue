@@ -84,7 +84,7 @@ export default {
                             localStorage.setItem('user_id',response.user_id);
 
                             // //go to home screen
-                            self.$emit('navigation',1,'Application title','index');
+                            self.$emit('navigation',1,'Scripta','index');
                         }
                         else{
                             alert(response.message);
