@@ -306,11 +306,18 @@ form {
       padding: 2%;
 } 
 
+.sublabel { 
+  font-size: 0.6em;
+  color: rgb(0, 139, 139,1);
+  }
+
   input {
     outline: none;
     text-align: left;
     
   }
+
+
 
   input:focus,textarea:focus {  
     outline: none;
@@ -380,8 +387,8 @@ a{cursor: pointer;}
     }
 
 :disabled {
-      background-color: white;
-      color: rgba(0,0,0,0.1);
+      background-color: rgba(0,0,0,0.1);
+      
       border:none;
   }
 

@@ -16,6 +16,7 @@
                 </label>
 
                 <label class="col-12" for="password1" v-on:keyup='updateInput(3)'>Password<br>
+                    <span class="sublabel">password must be at least 8-characters long</span>
                     <input type="password" class="userEntry"  id="password1" maxlength="20">
                 </label>
 

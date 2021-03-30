@@ -56,26 +56,29 @@
               
             <div class="row" id="footerMenuContainer">
 
-                   <button class="footer_button_main" v-on:click='navigate(1,"Scripta")' > 
-                           <!-- <img    src="../assets/logo.png" alt="logo"> -->
-                           <img src="../assets/home.png" alt="home icon">
-                   </button>
+                   <span class="centre">
+                           <button class="footer_button_main" v-on:click='navigate(1,"Scripta")' >                            
+                                   <span><img src="../assets/home.png" alt="home icon"></span>                           
+                           </button><br>
+                           <span class="darkcyan">Home</span>
+                   </span>
+                   
 
-                    <button class="footer_button_main" v-on:click='navigate(2,"Add new note")'>
-                            <img src="../assets/pen.png" alt="pen icon">                        
-                    </button>
+                    <span class="left2 centre">
+                            <button class="footer_button_main" v-on:click='navigate(2,"Add new note")'>
+                                    <img src="../assets/pen.png" alt="pen icon">                        
+                            </button> <br>
+                            <span class="darkcyan">New note</span>
+                    </span>
                 
-                    <button class="footer_button_main" v-on:click='navigate(3,"My dossiers")'>
-                            <img src="../assets/dossier1.png" alt="dossier icon">
-                    </button>
+                    <span class="left2 centre">
+                            <button class="footer_button_main" v-on:click='navigate(3,"My dossiers")'>
+                                    <img src="../assets/dossier1.png" alt="dossier icon">
+                            </button><br>  
+                            <span class="darkcyan">My Dossiers</span>
+
+                    </span>     
                 
-                        
-                    <!-- <button class="footer_button_main" v-on:click='navigate(4,"Calendar")'>
-                            <img src="../assets/calendar.png" alt="calendar icon">
-                    </button>      -->
-
-                    
-
             </div>
 
 
@@ -971,7 +974,7 @@ export default {
 
 .footer_button_main {
         margin-left: 2%;
-        height: 100%;        
+        height: auto;        
         background-color: white;
             
 }
