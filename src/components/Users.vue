@@ -336,12 +336,12 @@ export default {
                 //send post request to authenticate password
                  let self=this;
                  let user_id=localStorage.getItem('user_id');
-             
+                 let session_id=localStorage.getItem('session_id');
                  let request=new XMLHttpRequest();
                 
                  request.open('POST','https://scripta-app.herokuapp.com/api/validate_password');
                  request.setRequestHeader('Content-Type','application/json');
-                 
+                 request.setRequestHeader('session_id', session_id);
                  let data=JSON.stringify({oldPassword:oldPassword,user_id:user_id});
                  request.send(data);                  
                     
