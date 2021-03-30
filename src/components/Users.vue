@@ -221,7 +221,7 @@ export default {
             
             let modal=document.getElementById('passwordModal');
             // document.getElementById('Footer').style.display='none';
-            document.getElementById('Header').style.display='none';
+            // document.getElementById('Header').style.display='none';
             let main = document.getElementsByTagName('main');
                 main[0].style.display='none';
 
@@ -245,9 +245,9 @@ export default {
         
             setTimeout(() => {
                 modal.style.display='none';                
-                document.getElementById('Header').style.display='flex';
+                // document.getElementById('Header').style.display='flex';
                 let main = document.getElementsByTagName('main');
-                main[0].style.display='flex';
+                main[0].style.display='block';
                 
             }, 100);
             
