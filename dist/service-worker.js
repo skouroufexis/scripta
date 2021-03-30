@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.4008128dfd43a9f4d2b642cff39095d3.js"
+  "/precache-manifest.bb90c0adc3ef66630b60c49fb3bbe240.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "scripta"});
