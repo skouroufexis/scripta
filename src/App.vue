@@ -4,12 +4,12 @@
     <div id="warning" ><b><p>Please rotate your device in portrait position</p></b></div>    
     <Header1 v-if="menu<=0"/>
    <Header v-if="menu>0 && menu!=5" v-bind:sectionTitle='sectionTitle' v-on:navigation='navigate' v-bind:changedInitials='initials' />
-   <!-- <Login v-if="menu==0" v-on:navigation='navigate'/> -->
-   <!-- <Signup v-if="menu==(-1)" v-on:gotoLogin='navigate'  /> -->
+   <Login v-if="menu==0" v-on:navigation='navigate'/>
+   <Signup v-if="menu==(-1)" v-on:gotoLogin='navigate'  />
    <Index v-if="menu==1" />
    <New v-if="menu==2" v-on:detach='detach' v-bind:attachments='attachments' v-bind:dossier='dossier' v-bind:tags='tags' />
    <Dossier  v-if="menu==3" />
-   <!-- <Calendar v-if="menu==4" /> -->
+   
     <Users v-if="menu==5" v-on:navigate='navigate' v-on:initials='getInitials'/>
    <Footer v-if="menu>0 && menu!=5" id="Footer" v-bind:menu='menu' v-bind:attachmentsF='attachments' v-bind:tagsF='tags' v-bind:dossierF='dossier' v-on:navigation='navigate' v-on:actionsData='actionsData'/>
   </div>
