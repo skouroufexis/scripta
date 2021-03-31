@@ -99,7 +99,7 @@ export default {
             tags.forEach(t => {
                 
                 let request= new XMLHttpRequest();            
-                request.open('GET','https://scripta-app.herokuapp.com/api/user-tags');        
+                request.open('GET','http://scripta.domes-web.net/api/user-tags');        
 
                 let session_id=localStorage.getItem('session_id');
                 let user_fk=localStorage.getItem('user_id');
@@ -135,7 +135,7 @@ export default {
             let session_id=localStorage.getItem('session_id');
             let request=new XMLHttpRequest();
                 
-            request.open('DELETE','https://scripta-app.herokuapp.com/api/note-tag');
+            request.open('DELETE','http://scripta.domes-web.net/api/note-tag');
 
             request.setRequestHeader('session_id', session_id);
             request.setRequestHeader('Content-Type','application/json');
@@ -169,7 +169,7 @@ export default {
                 this.userTags=[];
                 inputValue=encodeURI(inputValue);
                 let request= new XMLHttpRequest();            
-                request.open('GET','https://scripta-app.herokuapp.com/api/get-user-tags');        
+                request.open('GET','http://scripta.domes-web.net/api/get-user-tags');        
 
                 let session_id=localStorage.getItem('session_id');
                 let user_id=localStorage.getItem('user_id');
@@ -244,7 +244,7 @@ export default {
                 
             let request=new XMLHttpRequest();
                             
-            request.open('POST','https://scripta-app.herokuapp.com/api/notesTags');
+            request.open('POST','http://scripta.domes-web.net/api/notesTags');
 
             request.setRequestHeader('session_id', session_id);
             request.setRequestHeader('Content-Type','application/json');

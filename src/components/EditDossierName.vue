@@ -95,7 +95,7 @@ export default {
             let dossier_name=input.value.trim();  
 
             let request=new XMLHttpRequest();                            
-            request.open('PUT','https://scripta-app.herokuapp.com/api/dossier-name');
+            request.open('PUT','http://scripta.domes-web.net/api/dossier-name');
             request.setRequestHeader('session_id', session_id);
             request.setRequestHeader('Content-Type','application/json');
 

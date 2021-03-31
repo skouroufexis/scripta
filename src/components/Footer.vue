@@ -235,7 +235,7 @@ export default {
         //send GET request with session_id
         let request= new XMLHttpRequest();    
         
-        request.open('GET','https://scripta-app.herokuapp.com/api/navigate');        
+        request.open('GET','http://scripta.domes-web.net/api/navigate');        
        
         //set session_id header        
         if(session_id){
@@ -491,7 +491,7 @@ export default {
            // input=document.getElementById('footer_inputDossierName');    
 
            //path for requesting user dossiers
-           path='https://scripta-app.herokuapp.com/api/get-user-dossiers';
+           path='http://scripta.domes-web.net/api/get-user-dossiers';
            container=document.getElementById('footer_dossierResultsContainer');
                 
            if(this.dossier==''){
@@ -505,7 +505,7 @@ export default {
            // input=document.getElementById('footer_inputTagName');
         
            //path for requesting user tags
-           path='https://scripta-app.herokuapp.com/api/get-user-tags';
+           path='http://scripta.domes-web.net/api/get-user-tags';
            container=document.getElementById('footer_tagsResultsContainer');
 
                 
@@ -759,7 +759,7 @@ export default {
           input=document.getElementById('footer_inputDossierName');    
 
           //path for requesting user dossiers
-           path='https://scripta-app.herokuapp.com/api/get-user-dossiers';
+           path='http://scripta.domes-web.net/api/get-user-dossiers';
            container=document.getElementById('footer_dossierResultsContainer');                                
            inputValue=input.value;
         }    
@@ -769,7 +769,7 @@ export default {
             input=document.getElementById('footer_inputTagName');
         
             //path for requesting user tags
-            path='https://scripta-app.herokuapp.com/api/get-user-tags';
+            path='http://scripta.domes-web.net/api/get-user-tags';
             container=document.getElementById('footer_tagsResultsContainer');
             inputValue=input.value;
             

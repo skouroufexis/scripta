@@ -158,7 +158,7 @@ export default {
               //send delete request
               let session_id=localStorage.getItem('session_id');               
               let request=new XMLHttpRequest();                
-              request.open('DELETE','https://scripta-app.herokuapp.com/api/dossier');
+              request.open('DELETE','http://scripta.domes-web.net//api/dossier');
               request.setRequestHeader('session_id', session_id);
               request.setRequestHeader('Content-Type','application/json');
               let data=JSON.stringify({dossier_fk:dossier_id});

@@ -144,7 +144,7 @@ export default {
             let self=this;
             let session_id=localStorage.getItem('session_id');
             let request=new XMLHttpRequest();                        
-            request.open('DELETE','https://scripta-app.herokuapp.com/api/attachment');
+            request.open('DELETE','http://scripta.domes-web.net/api/attachment');
 
             request.setRequestHeader('session_id', session_id);
             request.setRequestHeader('Content-Type','application/json');
@@ -257,7 +257,7 @@ export default {
             let data=[];
             let request=new XMLHttpRequest();
                             
-            request.open('POST','https://scripta-app.herokuapp.com/api/attachment');
+            request.open('POST','http://scripta.domes-web.net/api/attachment');
 
 
             request.setRequestHeader('session_id', session_id);
