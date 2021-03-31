@@ -4,8 +4,8 @@
     <div id="warning" ><b><p>Please rotate your device in portrait position</p></b></div>    
     <Header1 v-if="menu<=0"/>
    <Header v-if="menu>0 && menu!=5" v-bind:sectionTitle='sectionTitle' v-on:navigation='navigate' v-bind:changedInitials='initials' />
-   <Login v-if="menu==0" v-on:navigation='navigate'/>
-   <Signup v-if="menu==(-1)" v-on:gotoLogin='navigate'  />
+   <!-- <Login v-if="menu==0" v-on:navigation='navigate'/> -->
+   <!-- <Signup v-if="menu==(-1)" v-on:gotoLogin='navigate'  /> -->
    <Index v-if="menu==1" />
    <New v-if="menu==2" v-on:detach='detach' v-bind:attachments='attachments' v-bind:dossier='dossier' v-bind:tags='tags' />
    <Dossier  v-if="menu==3" />
