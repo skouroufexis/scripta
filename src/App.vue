@@ -71,7 +71,7 @@ export default {
         //send GET request with session_id
           let request= new XMLHttpRequest();    
               
-          request.open('GET','http://scripta.domes-web.net/api/navigate');        
+          request.open('GET','https://scripta.domes-web.net/api/navigate');        
           //set session_id header        
           if(session_id){
             request.setRequestHeader('session_id', session_id);               
@@ -146,7 +146,7 @@ export default {
       //send GET request 
       let request=new XMLHttpRequest();
 
-      request.open('GET','http://scripta.domes-web.net/api/expiry');        
+      request.open('GET','https://scripta.domes-web.net/api/expiry');        
       
       if(session_id){
       request.setRequestHeader('session_id', session_id);  

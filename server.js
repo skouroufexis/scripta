@@ -5,6 +5,8 @@ const express = require('express');
 const app=express();
 var cors = require('cors');
 
+app.use(cors());
+
 app.use('/', express.static('dist'));
 // app.use(serveStatic(__dirname + "/dist"));
 
@@ -15,7 +17,6 @@ const port = process.env.PORT || 8080;
 // app.use('/', serveStatic(path.join(__dirname, 'dist')));
 // app.use('/', express.static(path.join(__dirname, 'dist')));
 app.use(express.json({limit: '50mb'}));
-app.use(cors());
 // app.use(bodyParser.json({ limit: '50mb' }));
 
 
@@ -1647,33 +1648,6 @@ app.get('/api/query-note',function(req,res){
   }
 });
 
-
-
-
-// http.createServer(function (req, res) {
-
-
-    
-
-
-    
-//     //end database connection
-//     // connection.end(error=>{  
-//     //   if(error){
-//     //     console.log('Error terminating database connection'+error)
-//     //   }
-//     //   else{
-//     //     console.log('database connection successfully terminated');
-//     //   }
-//     // });
-   
-    
-  
- 
-  
-  
-// }).listen(port);
-//check if user_session token exists in headers
 
 app.listen(port);
 console.log("SSSERRVERRRR");

@@ -91,7 +91,7 @@ export default {
              
 
             let request= new XMLHttpRequest();            
-            request.open('GET','http://scripta.domes-web.net/api/recent-notes');        
+            request.open('GET','https://scripta.domes-web.net/api/recent-notes');        
 
             let session_id=localStorage.getItem('session_id');
             let user_id=localStorage.getItem('user_id');
@@ -124,7 +124,7 @@ export default {
             if(query_input!=''){
 
                 let request= new XMLHttpRequest();            
-                request.open('GET','http://scripta.domes-web.net/api/query-note');        
+                request.open('GET','https://scripta.domes-web.net/api/query-note');        
 
                 let session_id=localStorage.getItem('session_id');
                 let user_id=localStorage.getItem('user_id');
@@ -165,7 +165,7 @@ export default {
             if(del==true){
                 
             let request= new XMLHttpRequest();            
-            request.open('DELETE','http://scripta.domes-web.net/api/note');        
+            request.open('DELETE','https://scripta.domes-web.net/api/note');        
 
             let session_id=localStorage.getItem('session_id');            
             let data=JSON.stringify({note_id:note.note_id});            

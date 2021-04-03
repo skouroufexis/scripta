@@ -82,7 +82,7 @@ export default {
             //retrieve notes for this dossier
             let self=this;
             let request= new XMLHttpRequest();            
-            request.open('GET','http://scripta.domes-web.net/api/user-notes');        
+            request.open('GET','https://scripta.domes-web.net/api/user-notes');        
 
             let session_id=localStorage.getItem('session_id');
             let user_id=localStorage.getItem('user_id');
@@ -131,7 +131,7 @@ export default {
                 let session_id=localStorage.getItem('session_id');            
                 let request=new XMLHttpRequest();
                                 
-                request.open('DELETE','http://scripta.domes-web.net/api/note');
+                request.open('DELETE','https://scripta.domes-web.net/api/note');
 
                 request.setRequestHeader('session_id', session_id);
                 request.setRequestHeader('Content-Type','application/json');

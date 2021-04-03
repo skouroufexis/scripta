@@ -84,7 +84,7 @@ export default {
                        
             let self=this;
             let request= new XMLHttpRequest();            
-            request.open('GET','http://scripta.domes-web.net/api/get-user-dossiers'); 
+            request.open('GET','https://scripta.domes-web.net/api/get-user-dossiers'); 
             
              if(input.value!=this.dossier.dossier_name && input.value.trim()    !=''){
                 input_value=input.value;

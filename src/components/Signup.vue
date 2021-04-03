@@ -137,7 +137,7 @@ export default {
 
                 //POST request with user credentials                    
                 let request= new XMLHttpRequest();    
-                request.open('POST','http://scripta.domes-web.net/api/addNewUser');
+                request.open('POST','https://scripta.domes-web.net/api/addNewUser');
                 request.setRequestHeader('Content-Type','application/json');
                 
                 let data=JSON.stringify({user_name:this.username,user_email:this.email,user_password:this.password});

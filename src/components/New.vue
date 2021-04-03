@@ -510,7 +510,7 @@ export default {
  
         // //create POST request
         let request= new XMLHttpRequest();    
-        request.open('POST','http://scripta.domes-web.net/api/addNewNote');
+        request.open('POST','https://scripta.domes-web.net/api/addNewNote');
         
         //set session_id in the request header
         let session_id=localStorage.getItem('session_id');  

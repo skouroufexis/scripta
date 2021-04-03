@@ -224,7 +224,7 @@ export default {
             this.attachments=[];
             let self=this;         
             let request= new XMLHttpRequest();            
-            request.open('GET','http://scripta.domes-web.net/api/note-attachments'); 
+            request.open('GET','https://scripta.domes-web.net/api/note-attachments'); 
     
             let session_id=localStorage.getItem('session_id');
             let note_fk=this.noteData[0].note_id;
@@ -263,7 +263,7 @@ export default {
              
             let self=this;
             let request= new XMLHttpRequest();            
-            request.open('GET','http://scripta.domes-web.net/api/note-dossier');        
+            request.open('GET','https://scripta.domes-web.net/api/note-dossier');        
 
             let session_id=localStorage.getItem('session_id');
             let dossier_fk=this.noteData[0].dossier_fk;
@@ -292,7 +292,7 @@ export default {
             let self=this;
             
             let request= new XMLHttpRequest();            
-            request.open('GET','http://scripta.domes-web.net/api/note-tags');        
+            request.open('GET','https://scripta.domes-web.net/api/note-tags');        
 
             let session_id=localStorage.getItem('session_id');
             let note_fk=this.noteData[0].note_id;
@@ -334,7 +334,7 @@ export default {
 
             let request=new XMLHttpRequest();
                             
-            request.open('PUT','http://scripta.domes-web.net/api/note');
+            request.open('PUT','https://scripta.domes-web.net/api/note');
 
             request.setRequestHeader('session_id', session_id);
             request.setRequestHeader('Content-Type','application/json');
@@ -414,7 +414,7 @@ export default {
             //send request to modify dossier                        
             let request=new XMLHttpRequest();
                 
-            request.open('PUT','http://scripta.domes-web.net/api/assign-new-dossier');
+            request.open('PUT','https://scripta.domes-web.net/api/assign-new-dossier');
 
             request.setRequestHeader('session_id', session_id);   
             request.setRequestHeader('Content-Type','application/json');
